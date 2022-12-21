@@ -5,10 +5,10 @@ namespace meal_plan_generator.Models.MealPlan
     public class Nutrient
     {
         public string Name { get; set; }
-        public double MinAmount { get; set; } = default;
-        public double IdealAmount { get; set; }
-        public double MaxAmount { get; set; }
-        public double CurrentNutrientQuantity { get; set; }
+        public decimal MinAmount { get; set; } = default;
+        public decimal IdealAmount { get; set; }
+        public decimal MaxAmount { get; set; }
+        public decimal CurrentNutrientQuantity { get; set; }
         public NutrientSettings PrioritySettings { get; set; }
 
         public Nutrient(string name, decimal minAmount, decimal idealAmount, decimal maxAmount, decimal currentAmount, NutrientSettings priority)
@@ -18,7 +18,7 @@ namespace meal_plan_generator.Models.MealPlan
             IdealAmount = idealAmount;
             MaxAmount = maxAmount;
             CurrentNutrientQuantity = currentAmount;
-            PrioritySettings = priority
+            PrioritySettings = priority;
         }
 
         public double GetNutrientScore()
