@@ -1,8 +1,55 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Meal Plan Generator";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<h2>Meal Plan Generator</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="servingSize">Serving Size:</label>
+        <input type="text" class="form-control" id="servingSize" name="servingSize">
+    </div>
+    <div class="form-group">
+        <label for="calories">Calories:</label>
+        <input type="text" class="form-control" id="calories" name="calories" >
+    </div>
+    <div class="form-group">
+        <label for="protein">Protein (g):</label>
+        <input type="text" class="form-control" id="protein" name="protein">
+    </div>
+    <div class="form-group">
+        <label for="carbohydrates">Carbohydrates (g):</label>
+        <input type="text" class="form-control" id="carbohydrates" name="carbohydrates">
+    </div>
+    <div class="form-group">
+        <label for="fat">Fat (g):</label>
+        <input type="text" class="form-control" id="fat" name="fat">
+    </div>
+    <div class="form-group">
+        <label for="fiber">Fiber (g):</label>
+        <input type="text" class="form-control" id="fiber" name="fiber">
+    </div>
+    <div class="form-group">
+        <label for="sugar">Sugar (g):</label>
+        <input type="text" class="form-control" id="sugar" name="sugar">
+    </div>
+    <div class="form-group">
+        <label for="vitaminA">Vitamin A (%):</label>
+        <input type="text" class="form-control" id="vitaminA" name="vitaminA">
+    </div>
+    <div class="form-group">
+        <label for="vitaminC">Vitamin C (%):</label>
+        <input type="text" class="form-control" id="vitaminC" name="vitaminC">
+    </div>
+    <div class="form-group">
+        <label for="calcium">Calcium (%):</label>
+        <input type="text" class="form-control" id="calcium" name="calcium">
+    </div>
+    <div class="form-group">
+        <label for="iron">Iron (%):</label>
+        <input type="text" class="form-control" id="iron" name="iron">
+    </div>
+    <button type="submit" class="btn btn-primary">Generate Meal Plan</button>
+</form>
+

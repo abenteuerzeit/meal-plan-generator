@@ -1,52 +1,70 @@
-﻿namespace meal_plan_generator.Models.MealPlan
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
+namespace meal_plan_generator.Models.MealPlan
 {
     public class Nutrient
     {
         public string Name { get; set; }
-        public float MinAmount { get; set; }
-        public float IdealAmount { get; set; }
-        public float MaxAmount { get; set; }
-        public float CurrentAmount { get; set; }
-        public int Priority { get; set; }
+        public double MinAmount { get; set; } = default;
+        public double IdealAmount { get; set; }
+        public double MaxAmount { get; set; }
+        public double CurrentNutrientQuantity { get; set; }
+        public NutrientSettings PrioritySettings { get; set; }
 
-        public Nutrient(string name, float minAmount, float idealAmount, float maxAmount, float currentAmount, int priority)
+        public Nutrient(string name, decimal minAmount, decimal idealAmount, decimal maxAmount, decimal currentAmount, NutrientSettings priority)
         {
             Name = name;
             MinAmount = minAmount;
             IdealAmount = idealAmount;
             MaxAmount = maxAmount;
-            CurrentAmount = currentAmount;
-            Priority = priority;
+            CurrentNutrientQuantity = currentAmount;
+            PrioritySettings = priority
         }
 
-        public float CalculateScore()
+        public double GetNutrientScore()
         {
-            // Calculate the nutrient amount in relation to the min, ideal, and max amounts
-            float nutrientAmount = CurrentAmount / IdealAmount;
-
-            // Use the appropriate function based on the nutrient amount
-            if (MaxAmount >= CurrentAmount > IdealAmount)
+            // Use the appropriate function based on the current quantity of the nutrient
+            if ( IdealAmount < CurrentNutrientQuantity && CurrentNutrientQuantity <= MaxAmount)
             {
-                return (-1 * Priority * nutrientAmount) + 1;
+                return GetNutrientLessThanMaxScore();
             }
-            else if (IdealAmount >= CurrentAmount > MinAmount)
+            else if (MinAmount < CurrentNutrientQuantity && CurrentNutrientQuantity <= IdealAmount )
             {
-                return Priority * nutrientAmount + 1;
+                return GetNutrientGreaterThanMinScore();
             }
-            else if (MinAmount >= CurrentAmount >= 0)
+            else if (0 <= CurrentNutrientQuantity && CurrentNutrientQuantity <= MinAmount)
             {
-                return Priority * nutrientAmount + 1;
+                return GetNutrientLessThanMinScore();
             }
             else
             {
-                // Return 0 if the nutrient amount is outside the valid range
+                // Return 0 if the current quantity is outside the valid range (less than 0)
+                throw new ArgumentOutOfRangeException(nameof(CurrentNutrientQuantity));
                 return 0;
             }
         }
 
+        private double GetNutrientLessThanMinScore()
+        {
+            // Return a value based on the priority and current quantity if the current quantity is greater than or equal to 0
+            return (PrioritySettings.LessThanMin["Weight"] * (CurrentNutrientQuantity / MinAmount)) + PrioritySettings.LessThanMin["Intercept"];
+        }
+
+        private double GetNutrientGreaterThanMinScore()
+        {
+            // Return a value based on the priority and current quantity if the current quantity is greater than or equal to the ideal amount and greater than or equal to the lower bound
+            return (PrioritySettings.MoreThanMin["Weight"] * (CurrentNutrientQuantity / IdealAmount)) + PrioritySettings.MoreThanMin["Intercept"];
+        }
+
+        private double GetNutrientLessThanMaxScore()
+        {
+            // Return a value based on the priority and current quantity if the current quantity is greater than the ideal amount and less than or equal to the upper bound
+            return -(PrioritySettings.LessThanMax["Weight"] * (CurrentNutrientQuantity / MaxAmount)) + PrioritySettings.LessThanMax["Intercept"];
+        }
+
         public bool IsMet()
         {
-            return CurrentAmount >= MinAmount && CurrentAmount <= MaxAmount;
+            return CurrentNutrientQuantity >= MinAmount && CurrentNutrientQuantity <= MaxAmount;
         }
     }
 }

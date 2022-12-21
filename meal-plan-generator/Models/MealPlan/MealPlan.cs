@@ -26,7 +26,7 @@
             float totalScore = 0;
             foreach (Nutrient nutrient in nutrients)
             {
-                totalScore += nutrient.CalculateScore();
+                totalScore += nutrient.GetNutrientScore();
             }
             return totalScore / nutrients.Count;
         }
