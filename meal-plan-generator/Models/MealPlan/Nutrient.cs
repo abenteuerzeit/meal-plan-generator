@@ -21,7 +21,7 @@ namespace meal_plan_generator.Models.MealPlan
             PrioritySettings = priority;
         }
 
-        public double GetNutrientScore()
+        public decimal GetNutrientScore()
         {
             // Use the appropriate function based on the current quantity of the nutrient
             if ( IdealAmount < CurrentNutrientQuantity && CurrentNutrientQuantity <= MaxAmount)
@@ -44,19 +44,19 @@ namespace meal_plan_generator.Models.MealPlan
             }
         }
 
-        private double GetNutrientLessThanMinScore()
+        private decimal GetNutrientLessThanMinScore()
         {
             // Return a value based on the priority and current quantity if the current quantity is greater than or equal to 0
             return (PrioritySettings.LessThanMin["Weight"] * (CurrentNutrientQuantity / MinAmount)) + PrioritySettings.LessThanMin["Intercept"];
         }
 
-        private double GetNutrientGreaterThanMinScore()
+        private decimal GetNutrientGreaterThanMinScore()
         {
             // Return a value based on the priority and current quantity if the current quantity is greater than or equal to the ideal amount and greater than or equal to the lower bound
             return (PrioritySettings.MoreThanMin["Weight"] * (CurrentNutrientQuantity / IdealAmount)) + PrioritySettings.MoreThanMin["Intercept"];
         }
 
-        private double GetNutrientLessThanMaxScore()
+        private decimal GetNutrientLessThanMaxScore()
         {
             // Return a value based on the priority and current quantity if the current quantity is greater than the ideal amount and less than or equal to the upper bound
             return -(PrioritySettings.LessThanMax["Weight"] * (CurrentNutrientQuantity / MaxAmount)) + PrioritySettings.LessThanMax["Intercept"];
