@@ -2,7 +2,7 @@
 {
     public class Food
     {
-        internal float GetNutrientAmount(string name)
+        internal decimal GetNutrientAmount(string name)
         {
             throw new NotImplementedException();
         }

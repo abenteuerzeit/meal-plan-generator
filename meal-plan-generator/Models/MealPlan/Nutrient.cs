@@ -40,7 +40,7 @@ namespace meal_plan_generator.Models.MealPlan
             {
                 // Return 0 if the current quantity is outside the valid range (less than 0)
                 throw new ArgumentOutOfRangeException(nameof(CurrentNutrientQuantity));
-                return 0;
+                //return 0;
             }
         }
 

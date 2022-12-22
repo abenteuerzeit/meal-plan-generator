@@ -5,6 +5,24 @@
         private List<Food> foods;
         private List<Nutrient> nutrients;
 
+        // TODO: Generate a FDA Nutrition Facts label for the Meal Plan
+        //private string servingSize = "1 1/2 cup (208g)";
+        //private int servingsPerContainer = 4;
+        //private int caloriesPerServing = 240;
+        //private double totalFatPerServing = 4;
+        //private double saturatedFatPerServing = 1.5;
+        //private int cholesterolPerServing = 5;
+        //private int sodiumPerServing = 430;
+        //private double totalCarbohydratePerServing = 46;
+        //private double dietaryFiberPerServing = 7;
+        //private double totalSugarsPerServing = 4;
+        //private double addedSugarsPerServing = 2;
+        //private int proteinPerServing = 11;
+        //private double vitaminDPerServing = 2;
+        //private double calciumPerServing = 260;
+        //private double ironPerServing = 6;
+        //private double potassiumPerServing = 240;
+
         public MealPlan()
         {
             foods = new List<Food>();
@@ -21,9 +39,9 @@
             nutrients.Add(nutrient);
         }
 
-        public float CalculateScore()
+        public decimal CalculateScore()
         {
-            float totalScore = 0;
+            decimal totalScore = 0;
             foreach (Nutrient nutrient in nutrients)
             {
                 totalScore += nutrient.GetNutrientScore();
