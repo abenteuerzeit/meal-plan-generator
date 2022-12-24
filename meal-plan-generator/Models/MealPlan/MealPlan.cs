@@ -2,7 +2,7 @@
 {
     public class MealPlan
     {
-        private List<Food> foods;
+        public List<Food> Foods;
         private List<Nutrient> nutrients;
 
         // TODO: Generate a FDA Nutrition Facts label for the Meal Plan
@@ -25,13 +25,13 @@
 
         public MealPlan()
         {
-            foods = new List<Food>();
+            Foods = new List<Food>();
             nutrients = new List<Nutrient>();
         }
 
         public void AddFood(Food food)
         {
-            foods.Add(food);
+            Foods.Add(food);
         }
 
         public void AddNutrient(Nutrient nutrient)

@@ -1,4 +1,6 @@
-﻿namespace meal_plan_generator.Repository
+﻿using meal_plan_generator.Models.MealPlan;
+
+namespace meal_plan_generator.Repository
 {
     public interface IRepository<TEntity> where TEntity : class
     {
@@ -7,6 +9,7 @@
         void Add(TEntity entity);
         void Update(TEntity entity);
         void Remove(TEntity entity);
+        void Remove(Food food);
     }
 
 }
