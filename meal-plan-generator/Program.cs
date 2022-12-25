@@ -1,3 +1,4 @@
+using meal_plan_generator.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -17,8 +18,8 @@ namespace meal_plan_generator
                             .Build();
 
             // Add services to the container.
-            //builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddDbContext<ApiDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();

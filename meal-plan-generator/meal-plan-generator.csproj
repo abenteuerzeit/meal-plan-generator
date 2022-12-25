@@ -12,4 +12,14 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Data\" />
+    <None Remove="Data\Repository\" />
+    <None Remove="Models\Entity\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Data\Repository\" />
+    <Folder Include="Models\Entity\" />
+  </ItemGroup>
 </Project>
