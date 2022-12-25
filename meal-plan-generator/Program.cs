@@ -1,4 +1,6 @@
 using meal_plan_generator.Data;
+using meal_plan_generator.Data.Repository;
+using meal_plan_generator.Models.MealPlan;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -20,6 +22,8 @@ namespace meal_plan_generator
             // Add services to the container.
             builder.Services.AddDbContext<ApiDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped<IRepository<Food>, DataRepository<Food>>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfwork>();
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
