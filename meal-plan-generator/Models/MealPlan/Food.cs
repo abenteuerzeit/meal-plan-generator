@@ -1,6 +1,6 @@
 ﻿namespace meal_plan_generator.Models.MealPlan
 {
-    public class Food
+    public class Food : EntityBase
     {
         public List<Nutrient> Nutrients { get; set; }
 
