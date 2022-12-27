@@ -32,7 +32,7 @@ namespace meal_plan_generator.Services
             return foodList[index];
         }
 
-        public static List<Food> GetFoodsForNutrient(int id = 1003)
+        private List<Food> GetFoodsForNutrient(int id = 1003)
         {
             var foods = new List<Food>();
             string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Models", "USDA", "foods.json");
