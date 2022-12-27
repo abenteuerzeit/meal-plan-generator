@@ -1,6 +1,9 @@
 ﻿using meal_plan_generator.Models.MealPlan;
+using meal_plan_generator.Models.USDA;
 using meal_plan_generator.Repository;
 using meal_plan_generator.UnitofWork;
+using Newtonsoft.Json;
+using Nutrient = meal_plan_generator.Models.MealPlan.Nutrient;
 
 namespace meal_plan_generator.Services
 {
@@ -20,7 +23,26 @@ namespace meal_plan_generator.Services
 
         private Food SelectFood(Nutrient nutrient)
         {
-            throw new NotImplementedException();
+            // Use the USDA Food Data Central API to retrieve a list of foods that contain the highest amount of the specified nutrient
+            var foodList = GetFoodsForNutrient(nutrient);
+
+            // Select a random food from the list
+            var random = new Random();
+            var index = random.Next(foodList.Count);
+            return foodList[index];
+        }
+
+        private List<Food> GetFoodsForNutrient(Nutrient nutrient)
+        {
+
+            var foods = new List<Food>();
+            string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Models", "USDA", "foods.json");
+            string json = File.ReadAllText(jsonFilePath);
+            var deserializedFoods = JsonConvert.DeserializeObject(json);
+
+
+
+            return foods;
         }
 
         public IEnumerable<TEntity> GetAll()
@@ -95,6 +117,25 @@ namespace meal_plan_generator.Services
 
 
             }
+        }
+
+        public void DefineNutrients()
+        {
+            // Define nutrients list to consider when adding foods to the meal plan
+            var nutrients = new List<Nutrient>
+            {
+                new Nutrient { Name = "Vitamin C" },
+                new Nutrient { Name = "Vitamin B1" },
+                new Nutrient { Name = "Vitamin B2"}
+            };
+
+        }
+
+        public void CreateMealPlan()
+        {
+            // Initialize the meal plan with an empty foods list
+            var mealPlan = new MealPlan() { Foods = new List<Food>() };
+
         }
     }
 }

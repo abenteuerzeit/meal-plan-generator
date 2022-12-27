@@ -7,13 +7,8 @@
         public Dictionary<string, int> LessThanMin { get; set; } = UseDefaults();
 
 
-        NutrientSettings(Dictionary<string, int> lessThanMax, Dictionary<string, int> moreThanMin, Dictionary<string, int> lessThanMin)
-        {
-
-            LessThanMax = lessThanMax;
-            MoreThanMin = moreThanMin;
-            LessThanMin = lessThanMin;
-        }
+        public NutrientSettings()
+        { }
 
         private static Dictionary<string, int> UseDefaults()
         {

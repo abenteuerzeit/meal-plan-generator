@@ -9,7 +9,11 @@ namespace meal_plan_generator.Models.MealPlan
         public decimal IdealAmount { get; set; }
         public decimal MaxAmount { get; set; }
         public decimal CurrentNutrientQuantity { get; set; }
-        public NutrientSettings PrioritySettings { get; set; }
+        public NutrientSettings? PrioritySettings { get; set; }
+
+        public Nutrient()
+        {
+        }
 
         public Nutrient(string name, decimal minAmount, decimal idealAmount, decimal maxAmount, decimal currentAmount, NutrientSettings priority)
         {
@@ -24,11 +28,11 @@ namespace meal_plan_generator.Models.MealPlan
         public decimal GetNutrientScore()
         {
             // Use the appropriate function based on the current quantity of the nutrient
-            if ( IdealAmount < CurrentNutrientQuantity && CurrentNutrientQuantity <= MaxAmount)
+            if (IdealAmount < CurrentNutrientQuantity && CurrentNutrientQuantity <= MaxAmount)
             {
                 return GetNutrientLessThanMaxScore();
             }
-            else if (MinAmount < CurrentNutrientQuantity && CurrentNutrientQuantity <= IdealAmount )
+            else if (MinAmount < CurrentNutrientQuantity && CurrentNutrientQuantity <= IdealAmount)
             {
                 return GetNutrientGreaterThanMinScore();
             }
