@@ -21,7 +21,7 @@ namespace meal_plan_generator.Repository
 
         public TEntity GetById(int id)
         {
-            return _dbSet.Find(id);
+            return _dbSet.Find(id) ?? throw new NullReferenceException();
         }
 
         public void Add(TEntity entity)

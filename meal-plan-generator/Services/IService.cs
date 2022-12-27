@@ -10,7 +10,6 @@ namespace meal_plan_generator.Services
         void Update(TEntity entity);
         void Remove(TEntity entity);
         void SaveChanges();
-        void AddFood(Food food);
     }
 
 }

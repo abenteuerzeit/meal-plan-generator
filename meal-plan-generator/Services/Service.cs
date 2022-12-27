@@ -21,7 +21,7 @@ namespace meal_plan_generator.Services
             throw new NotImplementedException();
         }
 
-        private Food SelectFood(Nutrient nutrient)
+        private FoundationFood SelectFood(Nutrient nutrient)
         {
             // Use the USDA Food Data Central API to retrieve a list of foods that contain the highest amount of the specified nutrient
             var foodList = GetFoodsForNutrient();
@@ -32,9 +32,8 @@ namespace meal_plan_generator.Services
             return foodList[index];
         }
 
-        private static IEnumerable<FoundationFood> GetFoodsForNutrient(int id = 1003)
+        private static List<FoundationFood> GetFoodsForNutrient(int id = 1003)
         {
-            var foods = new List<Food>();
             string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Models", "USDA", "foods.json");
             Root? myDeserializedClass = JsonConvert.DeserializeObject<Root>(File.ReadAllText(jsonFilePath));
             if (myDeserializedClass != null && myDeserializedClass.FoundationFoods != null)
@@ -42,7 +41,7 @@ namespace meal_plan_generator.Services
                 var top100Foods = myDeserializedClass.FoundationFoods
                 .Where(f => f.FoodNutrients != null && f.FoodNutrients.Any(n => n.Nutrient.Id == id))
                 .OrderByDescending(f => f.FoodNutrients.First(n => n.Nutrient.Id == id).Amount)
-                .Take(100);
+                .Take(100).ToList();
                 return top100Foods;
             }
             else
@@ -83,10 +82,6 @@ namespace meal_plan_generator.Services
             _unitOfWork.SaveChanges();
         }
 
-        public void AddFood(Food food)
-        {
-            _unitOfWork.Repository.Add(food);
-        }
 
         public double CalculateMSCORE()
         {
@@ -94,17 +89,13 @@ namespace meal_plan_generator.Services
             throw new NotImplementedException();
         }
 
-        public void RemoveFood(Food food)
-        {
-            _unitOfWork.Repository.Remove(food);
-        }
 
         public void AddFoodsToMealPlan(List<Nutrient> nutrients)
         {
             foreach (var nutrient in nutrients)
             {
                 // Select a random food from the list of 100 foods that contain the highest amount of the nutrient
-                var food = SelectFood(nutrient);
+                FoundationFood food = SelectFood(nutrient);
 
                 // Calculate the new MSCORE after adding the food to the meal plan
                 var newMSCORE = CalculateMSCORE();
@@ -115,12 +106,12 @@ namespace meal_plan_generator.Services
                 // If a nutrient exceeds its upper bound, remove the food and try again
                 if (nutrientExceedsUB)
                 {
-                    RemoveFood(food);
+                    //Remove(food);
                 }
                 else
                 {
                     // Otherwise, add the food to the meal plan
-                    AddFood(food);
+                    //Add(food);
                 }
 
 

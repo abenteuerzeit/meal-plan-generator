@@ -17,7 +17,7 @@ namespace meal_plan_generator.Controllers
         public ActionResult AddFood(Food food)
         {
             // Add the food to the meal plan using the service layer
-            _foodService.AddFood(food);
+            _foodService.Add(food);
 
             // Save changes to the database using the service layer
             _foodService.SaveChanges();
