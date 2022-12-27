@@ -32,17 +32,23 @@ namespace meal_plan_generator.Services
             return foodList[index];
         }
 
-        private List<Food> GetFoodsForNutrient(int id = 1003)
+        private static IEnumerable<FoundationFood> GetFoodsForNutrient(int id = 1003)
         {
             var foods = new List<Food>();
             string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Models", "USDA", "foods.json");
-            string myJsonResponse = File.ReadAllText(jsonFilePath);
-            Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-            var top100Foods = myDeserializedClass.FoundationFoods
-            .Where(f => f.FoodNutrients.Any(n => n.Nutrient.Id == id))
-            .OrderByDescending(f => f.FoodNutrients.First(n => n.Nutrient.Id == id).Amount)
-            .Take(100);
-            return (List<Food>)top100Foods;
+            Root? myDeserializedClass = JsonConvert.DeserializeObject<Root>(File.ReadAllText(jsonFilePath));
+            if (myDeserializedClass != null && myDeserializedClass.FoundationFoods != null)
+            {
+                var top100Foods = myDeserializedClass.FoundationFoods
+                .Where(f => f.FoodNutrients != null && f.FoodNutrients.Any(n => n.Nutrient.Id == id))
+                .OrderByDescending(f => f.FoodNutrients.First(n => n.Nutrient.Id == id).Amount)
+                .Take(100);
+                return top100Foods;
+            }
+            else
+            {
+                throw new NullReferenceException("Value cannot be null");
+            }
         }
 
 
