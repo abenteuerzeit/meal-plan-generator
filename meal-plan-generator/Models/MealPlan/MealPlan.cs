@@ -1,37 +1,26 @@
-﻿namespace meal_plan_generator.Models.MealPlan
+﻿using meal_plan_generator.Models.USDA;
+
+namespace meal_plan_generator.Models.MealPlan
 {
     public class MealPlan
     {
-        public List<Food> Foods;
+        public List<FoundationFood> FoundationFoods;
         private List<Nutrient> nutrients;
-
-        // TODO: Generate a FDA Nutrition Facts label for the Meal Plan
-        //private string servingSize = "1 1/2 cup (208g)";
-        //private int servingsPerContainer = 4;
-        //private int caloriesPerServing = 240;
-        //private double totalFatPerServing = 4;
-        //private double saturatedFatPerServing = 1.5;
-        //private int cholesterolPerServing = 5;
-        //private int sodiumPerServing = 430;
-        //private double totalCarbohydratePerServing = 46;
-        //private double dietaryFiberPerServing = 7;
-        //private double totalSugarsPerServing = 4;
-        //private double addedSugarsPerServing = 2;
-        //private int proteinPerServing = 11;
-        //private double vitaminDPerServing = 2;
-        //private double calciumPerServing = 260;
-        //private double ironPerServing = 6;
-        //private double potassiumPerServing = 240;
 
         public MealPlan()
         {
-            Foods = new List<Food>();
+            FoundationFoods = new List<FoundationFood>();
             nutrients = new List<Nutrient>();
         }
 
-        public void AddFood(Food food)
+        public void AddFood(FoundationFood food)
         {
-            Foods.Add(food);
+            FoundationFoods.Add(food);
+        }
+
+        public void removeFood(FoundationFood food)
+        {
+            FoundationFoods.Remove(food);
         }
 
         public void AddNutrient(Nutrient nutrient)

@@ -1,30 +1,28 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using meal_plan_generator.Models.USDA;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace meal_plan_generator.Models.MealPlan
 {
     public class Nutrient
     {
-        public string Name { get; set; }
-        public decimal MinAmount { get; set; } = default;
+        public string Name { get; set; } = "Name not set";
+        public decimal MinAmount { get; set; }
         public decimal IdealAmount { get; set; }
         public decimal MaxAmount { get; set; }
         public decimal CurrentNutrientQuantity { get; set; }
-        public NutrientSettings? PrioritySettings { get; set; }
+        public NutrientSettings PrioritySettings { get; set; }
+        public ComponentId Id { get; internal set; }
 
-        public Nutrient()
+        public Nutrient(ComponentId id)
         {
+            MinAmount = GetNutrientDefault(id);
+            PrioritySettings = new NutrientSettings();
         }
-
-        public Nutrient(string name, decimal minAmount, decimal idealAmount, decimal maxAmount, decimal currentAmount, NutrientSettings priority)
+        private static decimal GetNutrientDefault(ComponentId id)
         {
-            Name = name;
-            MinAmount = minAmount;
-            IdealAmount = idealAmount;
-            MaxAmount = maxAmount;
-            CurrentNutrientQuantity = currentAmount;
-            PrioritySettings = priority;
+            // TODO: Set default minimum values
+            return 1;
         }
-
         public decimal GetNutrientScore()
         {
             // Use the appropriate function based on the current quantity of the nutrient
