@@ -24,7 +24,7 @@ namespace meal_plan_generator.Services
         private Food SelectFood(Nutrient nutrient)
         {
             // Use the USDA Food Data Central API to retrieve a list of foods that contain the highest amount of the specified nutrient
-            var foodList = GetFoodsForNutrient(nutrient);
+            var foodList = GetFoodsForNutrient();
 
             // Select a random food from the list
             var random = new Random();
@@ -32,18 +32,20 @@ namespace meal_plan_generator.Services
             return foodList[index];
         }
 
-        private List<Food> GetFoodsForNutrient(Nutrient nutrient)
+        public static List<Food> GetFoodsForNutrient(int id = 1003)
         {
-
             var foods = new List<Food>();
             string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Models", "USDA", "foods.json");
-            string json = File.ReadAllText(jsonFilePath);
-            var deserializedFoods = JsonConvert.DeserializeObject(json);
-
-
-
-            return foods;
+            string myJsonResponse = File.ReadAllText(jsonFilePath);
+            Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+            var top100Foods = myDeserializedClass.FoundationFoods
+            .Where(f => f.FoodNutrients.Any(n => n.Nutrient.Id == id))
+            .OrderByDescending(f => f.FoodNutrients.First(n => n.Nutrient.Id == id).Amount)
+            .Take(100);
+            return (List<Food>)top100Foods;
         }
+
+
 
         public IEnumerable<TEntity> GetAll()
         {
