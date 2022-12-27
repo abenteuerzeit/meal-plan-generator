@@ -37,11 +37,11 @@ namespace meal_plan_generator.Services
 
 
             string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Models", "USDA", "foods.json");
-            Root? myDeserializedClass = JsonConvert.DeserializeObject<Root>(File.ReadAllText(jsonFilePath));
-            if (myDeserializedClass != null && myDeserializedClass.FoundationFoods != null)
+            Root? json = JsonConvert.DeserializeObject<Root>(File.ReadAllText(jsonFilePath));
+            if (json != null && json.FoundationFoods != null)
             {
                 int id = (int)componentId;
-                List<FoundationFood> top100Foods = myDeserializedClass.FoundationFoods
+                List<FoundationFood> top100Foods = json.FoundationFoods
                 .Where(f => f.FoodNutrients != null && f.FoodNutrients.Any(n => n.Nutrient.Id == id))
                 .OrderByDescending(f => f.FoodNutrients.First(n => n.Nutrient.Id == id).Amount)
                 .Take(100).ToList();
