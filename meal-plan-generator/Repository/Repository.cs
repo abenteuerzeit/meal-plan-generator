@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using meal_plan_generator.Models.MealPlan;
+using Microsoft.EntityFrameworkCore;
 
 namespace meal_plan_generator.Repository
 {
@@ -36,6 +37,16 @@ namespace meal_plan_generator.Repository
         public void Remove(TEntity entity)
         {
             _dbSet.Remove(entity);
+        }
+
+        public void Remove(Food food)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(Food food)
+        {
+            throw new NotImplementedException();
         }
     }
 
