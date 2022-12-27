@@ -16,7 +16,7 @@ namespace meal_plan_generator
             Root? myDeserializedClass = JsonConvert.DeserializeObject<Root>(File.ReadAllText(jsonFilePath));
             if (myDeserializedClass != null && myDeserializedClass.FoundationFoods != null)
             {
-                int id = 1003;
+                int id = (int)ComponentId.Calcium_mg;
                 List<FoundationFood> top100Foods = myDeserializedClass.FoundationFoods
                 .Where(f => f.FoodNutrients != null && f.FoodNutrients.Any(n => n.Nutrient.Id == id))
                 .OrderByDescending(f => f.FoodNutrients.First(n => n.Nutrient.Id == id).Amount)
@@ -24,6 +24,11 @@ namespace meal_plan_generator
 
                 int index = new Random().Next(top100Foods.Count());
                 var randomFood = top100Foods[index];
+
+                // Get nutient value
+                var result = randomFood.FoodNutrients.Where(n => n.Nutrient.Id == id).First();
+                string nutrient = $"{randomFood.Description} \nwith\t{result.Nutrient.Name}\t{result.Nutrient.Number} {result.Nutrient.UnitName}\trank: {result.Nutrient.Rank}";
+                Console.WriteLine(nutrient);
             }
             #endregion
 
