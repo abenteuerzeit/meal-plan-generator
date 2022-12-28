@@ -1,17 +1,20 @@
 ﻿using meal_plan_generator.Models.USDA;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
 
 namespace meal_plan_generator.Models.MealPlan
 {
     public class Nutrient
     {
+        [Key]
+        public int Id { get; set; }
         public string Name { get; set; } = "Name not set";
         public decimal MinAmount { get; set; }
         public decimal IdealAmount { get; set; }
         public decimal MaxAmount { get; set; }
         public decimal CurrentNutrientQuantity { get; set; }
         public NutrientSettings PrioritySettings { get; set; }
-        public ComponentId Id { get; internal set; }
+        public ComponentId ComponentId { get; internal set; }
 
         public Nutrient(ComponentId id)
         {

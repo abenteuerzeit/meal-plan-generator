@@ -1,19 +1,37 @@
-﻿using meal_plan_generator.Models.MealPlan;
+﻿using meal_plan_generator.Context.UnitofWork;
+using meal_plan_generator.Models.MealPlan;
 using meal_plan_generator.Models.USDA;
 using meal_plan_generator.Repository;
-using meal_plan_generator.UnitofWork;
 using Newtonsoft.Json;
 using Nutrient = meal_plan_generator.Models.MealPlan.Nutrient;
 
 namespace meal_plan_generator.Services
 {
-    public class Service<TEntity> : IService<TEntity> where TEntity : class
+    public class Service
     {
-        private readonly IUnitOfWork<TEntity> _unitOfWork;
+        private IUnitOfWork _unitOfWork;
 
-        public Service(IUnitOfWork<TEntity> unitOfWork)
+        public Service(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+        }
+
+        public void LoadNutrientData(string database)
+        {
+            // Load nutrient data from the specified database
+            throw new NotImplementedException("TODO");
+        }
+
+        public void GenerateMealPlan()
+        {
+            // Generate the meal plan by selecting and adding foods
+            throw new NotImplementedException("TODO");
+        }
+
+        public float CalculateNutrientContent(Food food)
+        {
+            // Calculate the nutrient content of the specified food
+            throw new NotImplementedException("TODO");
         }
 
         private bool CheckForExceededNutrient(decimal newMSCORE)
@@ -62,39 +80,6 @@ namespace meal_plan_generator.Services
             }
         }
 
-
-
-        public IEnumerable<TEntity> GetAll()
-        {
-            return _unitOfWork.Repository.GetAll();
-        }
-
-        public TEntity GetById(int id)
-        {
-            return _unitOfWork.Repository.GetById(id);
-        }
-
-        public void Add(TEntity entity)
-        {
-            _unitOfWork.Repository.Add(entity);
-        }
-
-        public void Update(TEntity entity)
-        {
-            _unitOfWork.Repository.Update(entity);
-        }
-
-        public void Remove(TEntity entity)
-        {
-            _unitOfWork.Repository.Remove(entity);
-        }
-
-        public void SaveChanges()
-        {
-            _unitOfWork.SaveChanges();
-        }
-
-
         public decimal CalculateMSCORE(MealPlan mp)
         {
             // Calculate MSCORE based on the current list of foods in the meal plan
@@ -102,14 +87,13 @@ namespace meal_plan_generator.Services
 
         }
 
-
         public MealPlan AddFoodsToMealPlan(List<Nutrient> nutrients)
         {
             var mp = new MealPlan();
             foreach (var nutrient in nutrients)
             {
                 // Select a random food from the list of 100 foods that contain the highest amount of the nutrient
-                FoundationFood food = SelectFood(nutrient.Id);
+                FoundationFood food = SelectFood(nutrient.ComponentId);
 
                 // Calculate the new MSCORE after adding the food to the meal plan
                 decimal newMSCORE = CalculateMSCORE(mp);

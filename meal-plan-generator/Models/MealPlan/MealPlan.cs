@@ -1,16 +1,19 @@
 ﻿using meal_plan_generator.Models.USDA;
+using System.ComponentModel.DataAnnotations;
 
 namespace meal_plan_generator.Models.MealPlan
 {
     public class MealPlan
     {
+        [Key]
+        public int Id { get; set; }
         public List<FoundationFood> FoundationFoods;
-        private List<Nutrient> nutrients;
+        public List<Nutrient> Nutrients;
 
         public MealPlan()
         {
             FoundationFoods = new List<FoundationFood>();
-            nutrients = new List<Nutrient>();
+            Nutrients = new List<Nutrient>();
         }
 
         public void AddFood(FoundationFood food)
@@ -25,22 +28,22 @@ namespace meal_plan_generator.Models.MealPlan
 
         public void AddNutrient(Nutrient nutrient)
         {
-            nutrients.Add(nutrient);
+            Nutrients.Add(nutrient);
         }
 
         public decimal CalculateScore()
         {
             decimal totalScore = 0;
-            foreach (Nutrient nutrient in nutrients)
+            foreach (Nutrient nutrient in Nutrients)
             {
                 totalScore += nutrient.GetNutrientScore();
             }
-            return totalScore / nutrients.Count;
+            return totalScore / Nutrients.Count;
         }
 
         public bool IsAcceptable()
         {
-            foreach (Nutrient nutrient in nutrients)
+            foreach (Nutrient nutrient in Nutrients)
             {
                 if (!nutrient.IsMet())
                 {
@@ -54,7 +57,7 @@ namespace meal_plan_generator.Models.MealPlan
         {
             // Find the next unmet nutrient
             Nutrient? unmetNutrient = null;
-            foreach (Nutrient nutrient in nutrients)
+            foreach (Nutrient nutrient in Nutrients)
             {
                 if (!nutrient.IsMet())
                 {

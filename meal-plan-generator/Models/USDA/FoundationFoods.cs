@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace meal_plan_generator.Models.USDA
@@ -31,6 +34,8 @@ namespace meal_plan_generator.Models.USDA
 
     public class FoodNutrient
     {
+        public FoodNutrient()
+        { }
         public FoodNutrient(
             string type,
             int? id,
@@ -54,10 +59,12 @@ namespace meal_plan_generator.Models.USDA
             this.Min = min;
         }
 
+        [Key]
         [JsonProperty("type")]
         [JsonPropertyName("type")]
         public string Type { get; }
 
+        [Key]
         [JsonProperty("id")]
         [JsonPropertyName("id")]
         public int? Id { get; }
@@ -89,6 +96,14 @@ namespace meal_plan_generator.Models.USDA
         [JsonProperty("min")]
         [JsonPropertyName("min")]
         public double? Min { get; }
+    }
+
+    public class FoodNutrientConfiguration : IEntityTypeConfiguration<FoodNutrient>
+    {
+        public void Configure(EntityTypeBuilder<FoodNutrient> builder)
+        {
+            builder.HasKey(fn => new { fn.Type, fn.Id });
+        }
     }
 
     public class FoodNutrientDerivation
@@ -145,6 +160,8 @@ namespace meal_plan_generator.Models.USDA
 
     public class FoodPortion
     {
+        public FoodPortion()
+        { }
         public FoodPortion(
             int? id,
             double? value,
@@ -168,6 +185,7 @@ namespace meal_plan_generator.Models.USDA
             this.PortionDescription = portionDescription;
         }
 
+        [Key]
         [JsonProperty("id")]
         [JsonPropertyName("id")]
         public int? Id { get; }
@@ -207,6 +225,8 @@ namespace meal_plan_generator.Models.USDA
 
     public class FoundationFood
     {
+        public FoundationFood()
+        { }
         public FoundationFood(
             string foodClass,
             string description,
@@ -299,6 +319,8 @@ namespace meal_plan_generator.Models.USDA
 
     public class InputFood
     {
+        public InputFood()
+        { }
         public InputFood(
             int? id,
             string foodDescription,
@@ -325,6 +347,7 @@ namespace meal_plan_generator.Models.USDA
 
     public class InputFood2
     {
+        public InputFood2() { }
         public InputFood2(
             string foodClass,
             string description,
@@ -369,6 +392,8 @@ namespace meal_plan_generator.Models.USDA
 
     public class MeasureUnit
     {
+        public MeasureUnit()
+        { }
         public MeasureUnit(
             int? id,
             string name,
@@ -395,6 +420,7 @@ namespace meal_plan_generator.Models.USDA
 
     public class Nutrient
     {
+        public Nutrient() { }
         public Nutrient(
             int? id,
             string number,
@@ -410,9 +436,10 @@ namespace meal_plan_generator.Models.USDA
             this.UnitName = unitName;
         }
 
+        [Key]
         [JsonProperty("id")]
         [JsonPropertyName("id")]
-        public int? Id { get; }
+        public int? Id { get; set; }
 
         [JsonProperty("number")]
         [JsonPropertyName("number")]
@@ -433,6 +460,7 @@ namespace meal_plan_generator.Models.USDA
 
     public class NutrientConversionFactor
     {
+        public NutrientConversionFactor() { }
         public NutrientConversionFactor(
             string type,
             double? proteinValue,
@@ -471,6 +499,7 @@ namespace meal_plan_generator.Models.USDA
 
     public class Root
     {
+        public Root() { }
         public Root(
             List<FoundationFood> foundationFoods
         )
