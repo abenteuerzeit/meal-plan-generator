@@ -6,8 +6,9 @@ namespace meal_plan_generator.Context.UnitofWork
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<MealPlan> MealPlanRepository { get; }
-        IRepository<FoundationFood> FoundationFoodRepository { get; }
+        //IRepository<MealPlan> MealPlanRepository { get; }
+        //IRepository<FoundationFood> FoundationFoodRepository { get; }
+        IRepository<Form> FormRepository { get; }
         void Save();
     }
 

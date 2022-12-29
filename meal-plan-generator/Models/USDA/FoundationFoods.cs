@@ -38,7 +38,7 @@ namespace meal_plan_generator.Models.USDA
         { }
         public FoodNutrient(
             string type,
-            int? id,
+            int id,
             Nutrient nutrient,
             int? dataPoints,
             FoodNutrientDerivation foodNutrientDerivation,
@@ -65,9 +65,10 @@ namespace meal_plan_generator.Models.USDA
         public string Type { get; }
 
         [Key]
+        [Required]
         [JsonProperty("id")]
         [JsonPropertyName("id")]
-        public int? Id { get; }
+        public int Id { get; }
 
         [JsonProperty("nutrient")]
         [JsonPropertyName("nutrient")]

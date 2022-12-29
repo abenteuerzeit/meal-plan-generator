@@ -7,18 +7,18 @@ using meal_plan_generator.Models.MealPlan;
 using meal_plan_generator.Repository;
 using Microsoft.EntityFrameworkCore;
 
-public class MealPlanRepository : Repository<MealPlan>, IMealPlanRepository
+public class MealPlanFormRepository : Repository<Form>, IFormRepository
 {
     private readonly MealPlanDbContext _context;
-    public MealPlanRepository(MealPlanDbContext context) : base(context.MealPlans)
+    public MealPlanFormRepository(MealPlanDbContext context) : base(context.Forms)
     {
         _context = context;
     }
 
-    public async Task<IEnumerable<MealPlan>> GetMealPlanById(int id)
+    public async Task<IEnumerable<Form>> GetFormById(int id)
     {
-        return await _context.MealPlans
-            .Where(mp => mp.Id == id)
+        return await _context.Forms
+            .Where(f => f.Id == id)
             .ToListAsync();
     }
 }

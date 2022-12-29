@@ -2,6 +2,26 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+function calculateAge(birthday) {
+    var ageDifMs = Date.now() - birthday.getTime();
+    var ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
+
+document.getElementById('meal-plan-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    // Calculate the age of the user based on their birthdate
+    var birthdate = new Date(document.getElementById('birthdate').value);
+    var age = calculateAge(birthdate);
+
+    // Set the values in the form based on the age of the user
+    // ...
+});
+
+
+
 function fillForm() {
     // Generate random values for the form fields
     const servingSize = Math.floor(Math.random() * 1000);

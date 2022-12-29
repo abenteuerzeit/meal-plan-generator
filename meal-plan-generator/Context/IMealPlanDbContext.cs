@@ -6,7 +6,8 @@ namespace meal_plan_generator.Context
 {
     public interface IMealPlanDbContext
     {
-        DbSet<FoundationFood> FoundationFoods { get; set; }
-        DbSet<MealPlan> MealPlans { get; set; }
+        //DbSet<FoundationFood> FoundationFoods { get; set; }
+        //DbSet<MealPlan> MealPlans { get; set; }
+        DbSet<Form> Forms { get; }
     }
 }

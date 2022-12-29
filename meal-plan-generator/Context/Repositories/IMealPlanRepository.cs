@@ -3,8 +3,8 @@ using meal_plan_generator.Repository;
 
 namespace meal_plan_generator.Context.Repositories
 {
-    public interface IMealPlanRepository : IRepository<MealPlan>
+    public interface IFormRepository : IRepository<Form>
     {
-        Task<IEnumerable<MealPlan>> GetMealPlanById(int id);
+        Task<IEnumerable<Form>> GetFormById(int id);
     }
 }

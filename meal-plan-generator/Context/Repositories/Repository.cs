@@ -28,6 +28,12 @@ namespace meal_plan_generator.Repository
             _dbSet.Add(entity);
         }
 
+        public virtual TEntity Create(TEntity entity)
+        {
+            _dbSet.Add(entity);
+            return entity;
+        }
+
         public virtual void Update(TEntity entity)
         {
             _dbSet.Attach(entity);

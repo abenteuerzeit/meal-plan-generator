@@ -1,0 +1,55 @@
+﻿@using meal_plan_generator.Models.MealPlan
+
+@model Form
+
+<link rel="stylesheet" href="~/css/styles.css" />
+
+<form asp-controller="MealPlans" asp-action="Create" class="form" id="meal-plan-form">
+    <h2 class="form__title">Generate a Meal Plan</h2>
+    <div class="form__section form__section--personal-data">
+        <h3 class="form__section-title">Personal Data</h3>
+        <div class="form__row">
+            <div id="birthday-selector">
+                <label for="birthdate">Birthdate</label>
+                <input type="date" id="birthdate">
+            </div>
+            <div id="gender-selector">
+                <label for="gender">Gender</label>
+                <select id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form__section form__section--nutrient-data">
+        <h3 class="form__section-title">Nutrient Data</h3>
+        @foreach (var nutrient in Model.NutrientData)
+        {
+            <div class="form__nutrient-group">
+                <div class="form__nutrient-name">@nutrient.Name</div>
+                <div class="form__row">
+                    <div class="form__row-item">
+                        <label class="form__label" for="@nutrient.Id-lower-bound">Lower Bound</label>
+                        <input class="form__input" type="number" id="@nutrient.Id-lower-bound" min="0" step="any">
+                        <span class="form__unit">@nutrient.Unit</span>
+                    </div>
+                    <div class="form__row-item">
+                    <span class="form__validation-error"></span>
+                        <label class="form__label" for="@nutrient.Id-ideal-amount">Ideal Amount</label>
+                        <input class="form__input" type="number" id="@nutrient.Id-ideal-amount" min="0" step="any">
+                        <span class="form__unit">@nutrient.Unit</span>
+                        <span class="form__validation-error"></span>
+                    </div>
+                    <div class="form__row-item">
+                        <label class="form__label" for="@nutrient.Id-upper-bound">Upper Bound</label>
+                        <input class="form__input" type="number" id="@nutrient.Id-upper-bound" min="0" step="any">
+                        <span class="form__unit">@nutrient.Unit</span>
+                        <span class="form__validation-error"></span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <input type="submit" class="form__submit-button" value="Submit"/>
+</form>

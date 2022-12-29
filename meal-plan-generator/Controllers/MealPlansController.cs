@@ -1,4 +1,5 @@
 ﻿using meal_plan_generator.Context.UnitofWork;
+using meal_plan_generator.Models.MealPlan;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,8 +16,31 @@ namespace meal_plan_generator.Controllers
         // GET: MealPlansController
         public IActionResult Index()
         {
-            var mealPlans = _unitOfWork.MealPlanRepository.GetAll();
-            return View(mealPlans);
+            // Create a new instance of the Form class
+            Form form = new Form();
+
+            // Pass the form instance as a model to the view
+            return View(form);
+        }
+
+        // POST: MealPlansController/GenerateMealPlan
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GenerateMealPlan(Form form)
+        {
+            try
+            {
+                // Generate the meal plan using the form data and save it to the database
+                // using the unit of work instance
+
+                // Redirect to the Index action to display the generated meal plan
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                // If an error occurred, display an error message to the user
+                return View("Error");
+            }
         }
 
         // GET: MealPlansController/Details/5
@@ -80,6 +104,8 @@ namespace meal_plan_generator.Controllers
         {
             try
             {
+                // TODO: Add delete logic here
+
                 return RedirectToAction(nameof(Index));
             }
             catch
