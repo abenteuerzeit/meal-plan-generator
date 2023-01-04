@@ -9,6 +9,7 @@ namespace meal_plan_generator.Models.MealPlan
         [Key]
         public int Id { get; set; }
         public string Name { get; set; } = "Name not set";
+        public string Unit { get; set; } = "Undefined";
         public decimal MinAmount { get; set; }
         public decimal IdealAmount { get; set; }
         public decimal MaxAmount { get; set; }
@@ -16,6 +17,10 @@ namespace meal_plan_generator.Models.MealPlan
         public NutrientSettings PrioritySettings { get; set; }
         public ComponentId ComponentId { get; internal set; }
 
+        public Nutrient()
+        {
+            PrioritySettings = new NutrientSettings();
+        }
         public Nutrient(ComponentId id)
         {
             MinAmount = GetNutrientDefault(id);

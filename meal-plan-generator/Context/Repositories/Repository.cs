@@ -8,9 +8,11 @@ namespace meal_plan_generator.Repository
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly DbSet<TEntity> _dbSet;
-        public Repository(DbSet<TEntity> dbSet)
+        private readonly FakeFoodDbContext _context;
+        public Repository(FakeFoodDbContext context)
         {
-            _dbSet = dbSet;
+            _context = context;
+            _dbSet = context.Set<TEntity>();
         }
 
         public virtual IEnumerable<TEntity> GetAll()

@@ -1,6 +1,8 @@
 using meal_plan_generator.Context;
 using meal_plan_generator.Context.UnitofWork;
+using meal_plan_generator.Models.MealPlan;
 using meal_plan_generator.Models.USDA;
+using meal_plan_generator.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -23,16 +25,16 @@ namespace meal_plan_generator
             // Add services to the container.
 
             var services = builder.Services;
-            services.AddDbContext<MealPlanDbContext>(options =>
+
+            //services.AddDbContext<MealPlanDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<FakeFoodDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            // Add your DbContext as a service.
-            services.AddDbContext<UnitOfWork>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IRepository<Food>, Repository<Food>>();
 
-            // Add your UnitOfWork class as a service.
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
 
             builder.Services.AddControllersWithViews();
 
