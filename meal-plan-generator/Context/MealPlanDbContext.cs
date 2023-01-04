@@ -9,6 +9,7 @@ namespace meal_plan_generator.Context
         //public DbSet<MealPlan> MealPlans { get; set; }
         //public DbSet<FoundationFood> FoundationFoods { get; set; }
         public DbSet<Form> Forms { get; set; }
+        public DbSet<Food> Foods { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
