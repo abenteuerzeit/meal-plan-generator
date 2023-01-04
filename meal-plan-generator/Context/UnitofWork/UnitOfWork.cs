@@ -8,24 +8,18 @@ namespace meal_plan_generator.Context.UnitofWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly FakeFoodDbContext _context;
+        private readonly AppDbContext _context;
 
-        private readonly ApplicationDbContext _context;
-
-        public IRepository<MealManager> MealManagerRepo { get; }
-
-        public UnitOfWork(ApplicationDbContext context, IRepository<MealManager> mealManagerRepo)
-        {
-            _context = context;
-            MealManagerRepo = mealManagerRepo;
-        }
         public IRepository<Form> FormRepository { get; }
         public IRepository<Food> FakeFoodsRepo { get; }
-        public UnitOfWork(FakeFoodDbContext context, IRepository<Form> formRepo, IRepository<Food> dataRepo)
+        public IRepository<MealPlan> MealPlanRepo { get; }
+
+        public UnitOfWork(AppDbContext context, IRepository<Form> formRepo, IRepository<Food> dataRepo, IRepository<MealPlan> mealPlan)
         {
             _context = context;
             FormRepository = formRepo;
             FakeFoodsRepo = dataRepo;
+            MealPlanRepo = mealPlan;
         }
 
         public void Save()

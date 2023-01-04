@@ -23,4 +23,11 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Context\FakeDbContext.cs" />
+    <Compile Remove="Context\IMealPlanDbContext.cs" />
+    <Compile Remove="Context\MealPlanDbContext.cs" />
+    <Compile Remove="Context\FoodDbContext.cs" />
+    <Compile Remove="Context\IFakeFoodDbContext.cs" />
+  </ItemGroup>
 </Project>

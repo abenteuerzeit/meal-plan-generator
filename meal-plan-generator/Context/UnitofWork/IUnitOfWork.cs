@@ -8,6 +8,7 @@ namespace meal_plan_generator.Context.UnitofWork
     {
         IRepository<Form> FormRepository { get; }
         IRepository<Food> FakeFoodsRepo { get; }
+        IRepository<MealPlan> MealPlanRepo { get; }
         void Save();
     }
 

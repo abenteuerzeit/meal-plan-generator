@@ -1,8 +1,8 @@
 ﻿namespace meal_plan_generator.Models.MealPlan
 {
-    public class Food
+    public class Food : EntityBase
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string Name { get; set; }
         public List<Nutrient> Nutrients { get; set; }
         public double Servings { get; set; }

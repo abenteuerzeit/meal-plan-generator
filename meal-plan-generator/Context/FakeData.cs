@@ -10,7 +10,7 @@ namespace meal_plan_generator.Context
     public static class FakeData
     {
         private static readonly Random rnd = new();
-        public static void Initialize(FakeFoodDbContext context, int amount = 10000)
+        public static void Initialize(AppDbContext context, int amount = 10000)
         {
             if (!context.Foods.Any())
             {

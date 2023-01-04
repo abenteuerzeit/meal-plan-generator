@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace meal_plan_generator.Models.MealPlan
 {
-    public class MealPlan
+    public class MealPlan : EntityBase
     {
-        [Key]
-        public int Id { get; set; }
+        //[Key]
+        //public int Id { get; set; }
         public List<FoundationFood> FoundationFoods;
         public List<Nutrient> Nutrients;
 

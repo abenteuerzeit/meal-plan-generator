@@ -1,92 +1,92 @@
 ﻿using meal_plan_generator.Context;
+using meal_plan_generator.Models;
 using meal_plan_generator.Models.MealPlan;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 
 namespace meal_plan_generator.Repository
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : EntityBase
     {
         private readonly DbSet<TEntity> _dbSet;
-        private readonly FakeFoodDbContext _context;
-        public Repository(FakeFoodDbContext context)
+        private readonly AppDbContext _context;
+
+        public Repository(AppDbContext context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();
         }
 
-        public virtual IEnumerable<TEntity> GetAll()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return _dbSet;
+            return await _dbSet.ToListAsync();
         }
 
-        public virtual TEntity GetById(object id)
+        public async Task<TEntity> GetByIdAsync(int id, string includeProperties = "")
         {
-            return _dbSet.Find(id) ?? throw new ArgumentNullException(nameof(id));
+            IQueryable<TEntity> query = _dbSet;
+            query = includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries).Aggregate(query, (current, prop) => current.Include(prop));
+            return await query.SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public virtual void Add(TEntity entity)
+        public async Task InsertRecordAsync(TEntity entity)
         {
-            _dbSet.Add(entity);
+            await _dbSet.AddAsync(entity);
         }
 
-        public virtual TEntity Create(TEntity entity)
+
+        public void UpdateAsync(TEntity entity)
         {
-            _dbSet.Add(entity);
-            return entity;
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
-        public virtual void Update(TEntity entity)
+        public async Task DeleteAsync(int id)
         {
-            _dbSet.Attach(entity);
-        }
-
-        public virtual void Remove(object id)
-        {
-            TEntity entity = _dbSet.Find(id) ?? throw new ArgumentNullException(nameof(id));
-            Delete(entity);
-        }
-
-        public virtual void Delete(TEntity entity)
-        {
+            var entity = await _dbSet.FindAsync(id);
             _dbSet.Remove(entity);
         }
 
-        public virtual IQueryable<TEntity> AsQueryable()
+        public async Task SaveChangesAsync()
         {
-            return _dbSet.AsQueryable();
+            await _context.SaveChangesAsync();
         }
 
-        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
-        {
-            return _dbSet.Where(predicate);
-        }
+        //public virtual IQueryable<TEntity> AsQueryable()
+        //{
+        //    return _dbSet.AsQueryable();
+        //}
 
-        public TEntity Single(Expression<Func<TEntity, bool>> predicate)
-        {
-            return _dbSet.Single(predicate);
-        }
+        //public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        //{
+        //    return _dbSet.Where(predicate);
+        //}
 
-        public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
-        {
-            TEntity? entity = _dbSet.SingleOrDefault(predicate);
-            if (entity == null)
-            {
-                throw new InvalidOperationException("No matching entity was found.");
-            }
-            return entity;
-        }
+        //public TEntity Single(Expression<Func<TEntity, bool>> predicate)
+        //{
+        //    return _dbSet.Single(predicate);
+        //}
+
+        //public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
+        //{
+        //    TEntity? entity = _dbSet.SingleOrDefault(predicate);
+        //    if (entity == null)
+        //    {
+        //        throw new InvalidOperationException("No matching entity was found.");
+        //    }
+        //    return entity;
+        //}
 
 
-        public TEntity First(Expression<Func<TEntity, bool>> predicate)
-        {
-            return _dbSet.First(predicate);
-        }
+        //public TEntity First(Expression<Func<TEntity, bool>> predicate)
+        //{
+        //    return _dbSet.First(predicate);
+        //}
 
-        public void Attach(TEntity entity)
-        {
-            _dbSet.Attach(entity);
-        }
+        //public void Attach(TEntity entity)
+        //{
+        //    _dbSet.Attach(entity);
+        //}
 
     }
 }

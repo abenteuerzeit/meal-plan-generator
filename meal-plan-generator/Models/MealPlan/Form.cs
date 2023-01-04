@@ -15,10 +15,10 @@ namespace meal_plan_generator.Models.MealPlan
         public int FormId { get; set; }
     }
 
-    public class Form
+    public class Form : EntityBase
     {
-        [Key, Required]
-        public int Id { get; internal set; }
+        //[Key, Required]
+        //public int Id { get; internal set; }
         public List<NutrientData> NutrientData { get; set; }
 
         public Form()

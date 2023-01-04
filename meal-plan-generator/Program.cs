@@ -29,10 +29,12 @@ namespace meal_plan_generator
             //services.AddDbContext<MealPlanDbContext>(options =>
             //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<FakeFoodDbContext>(options =>
+            services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddScoped<IRepository<Form>, Repository<Form>>();
             services.AddScoped<IRepository<Food>, Repository<Food>>();
+            services.AddScoped<IRepository<MealPlan>, Repository<MealPlan>>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
