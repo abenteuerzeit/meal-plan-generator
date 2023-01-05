@@ -34,10 +34,10 @@ namespace meal_plan_generator.Models.MealPlan
         public decimal CalculateScore()
         {
             decimal totalScore = 0;
-            foreach (Nutrient nutrient in Nutrients)
-            {
-                totalScore += nutrient.GetNutrientScore();
-            }
+            //foreach (Nutrient nutrient in Nutrients)
+            //{
+            //    totalScore += nutrient.GetNutrientScore();
+            //}
             return totalScore / Nutrients.Count;
         }
 

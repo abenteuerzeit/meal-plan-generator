@@ -10,14 +10,11 @@ namespace meal_plan_generator.Context
     public static class FakeData
     {
         private static readonly Random rnd = new();
-        public static void Initialize(AppDbContext context, int amount = 10000)
+        public static void Initialize(AppDbContext context, int amount = 50)
         {
-            if (!context.Foods.Any())
-            {
-                var foods = GenerateFoods(amount);
-                context.Foods.AddRange(foods);
-                context.SaveChanges();
-            }
+            var foods = GenerateFoods(amount);
+            context.Foods.AddRange(foods);
+            context.SaveChanges();
         }
 
         private static IEnumerable<Food> GenerateFoods(int amount)

@@ -17,9 +17,13 @@ namespace meal_plan_generator.Context.UnitofWork
         public UnitOfWork(AppDbContext context, IRepository<Form> formRepo, IRepository<Food> dataRepo, IRepository<MealPlan> mealPlan)
         {
             _context = context;
+            if (!_context.Foods.Any())
+                FakeData.Initialize(_context);
             FormRepository = formRepo;
             FakeFoodsRepo = dataRepo;
             MealPlanRepo = mealPlan;
+            
+
         }
 
         public void Save()

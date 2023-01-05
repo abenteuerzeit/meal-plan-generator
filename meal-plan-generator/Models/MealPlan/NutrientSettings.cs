@@ -6,9 +6,9 @@ namespace meal_plan_generator.Models.MealPlan
     {
         [Key]
         public int Id { get; set; }
-        public Dictionary<string, int> LessThanMax { get; set; } = UseDefaults();
-        public Dictionary<string, int> MoreThanMin { get; set; } = UseDefaults();
-        public Dictionary<string, int> LessThanMin { get; set; } = UseDefaults();
+        //public Dictionary<string, int> LessThanMax { get; set; } = UseDefaults();
+        //public Dictionary<string, int> MoreThanMin { get; set; } = UseDefaults();
+        //public Dictionary<string, int> LessThanMin { get; set; } = UseDefaults();
 
 
         public NutrientSettings()

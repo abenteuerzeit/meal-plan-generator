@@ -9,11 +9,17 @@
         public double ServingSize { get; set; }
         public int CaloriesPerServing { get; set; }
 
+        public Food()
+        {
+
+        }
+
         public Food(string name, List<Nutrient> nutrients)
         {
             Name = name;
             Nutrients = nutrients;
         }
+
 
         internal decimal GetNutrientAmount(string name)
         {
