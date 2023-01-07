@@ -10,7 +10,7 @@ namespace meal_plan_generator.Context
     public static class FakeData
     {
         private static readonly Random rnd = new();
-        public static void Initialize(AppDbContext context, int amount = 50)
+        public static void Initialize(AppDbContext context, int amount = 2000)
         {
             var foods = GenerateFoods(amount);
             context.Foods.AddRange(foods);
@@ -32,25 +32,25 @@ namespace meal_plan_generator.Context
             {
                 return new List<Nutrient>()
                 {
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Calcium", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Phosphorus", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Magnesium", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Potassium", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Sodium", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Iron", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Manganese", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Copper", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Zinc", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Selenium", Unit = "mcg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Vitamin A", Unit = "IU" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Vitamin C", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Vitamin E", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Vitamin K", Unit = "mcg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Thiamin", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Roboflavin", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Niacin", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Pantothenic Acid", Unit = "mg" },
-                    new Nutrient { CurrentNutrientQuantity = rnd.Next(0, 1000), Name = "Folate", Unit = "mcg" }
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Calcium", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Phosphorus", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Magnesium", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Potassium", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Sodium", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Iron", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Manganese", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Copper", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Zinc", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Selenium", Unit = "mcg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Vitamin A", Unit = "IU" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Vitamin C", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Vitamin E", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Vitamin K", Unit = "mcg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Thiamin", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Roboflavin", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Niacin", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Pantothenic Acid", Unit = "mg" },
+                    new Nutrient { Quantity = rnd.Next(0, 1000), Name = "Folate", Unit = "mcg" }
                 };
             }
         }
