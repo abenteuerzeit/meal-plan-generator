@@ -36,7 +36,7 @@ namespace meal_plan_generator.Repository
         }
 
 
-        public void UpdateAsync(TEntity entity)
+        public void Update(TEntity entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
         }

@@ -1,6 +1,6 @@
 ﻿using meal_plan_generator.Models;
 using meal_plan_generator.Models.MealPlan;
-using meal_plan_generator.Models.USDA;
+//using meal_plan_generator.Models.USDA;
 using System.Linq.Expressions;
 
 namespace meal_plan_generator.Repository
@@ -17,7 +17,7 @@ namespace meal_plan_generator.Repository
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task<TEntity> GetByIdAsync(int id, string includeProperties = "");
         Task InsertRecordAsync(TEntity entity);
-        void UpdateAsync(TEntity entity);
+        void Update(TEntity entity);
         Task DeleteAsync(int id);
         Task SaveChangesAsync();
         //void Attach(TEntity entity);
