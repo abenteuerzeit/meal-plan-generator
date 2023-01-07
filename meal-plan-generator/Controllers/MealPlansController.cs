@@ -34,7 +34,6 @@ namespace meal_plan_generator.Controllers
         // GET: MealPlansController
         public IActionResult Index()
         {
-            // Create a new instance of the Form class
             Form form = new Form();
 
             // Pass the form instance as a model to the view
