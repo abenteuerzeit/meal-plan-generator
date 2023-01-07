@@ -34,7 +34,7 @@ namespace meal_plan_generator.Services
             throw new NotImplementedException("TODO");
         }
 
-        private bool CheckForExceededNutrient(decimal newMSCORE)
+        private bool CheckForExceededNutrient(float newMSCORE)
         {
             throw new NotImplementedException();
         }
@@ -80,7 +80,7 @@ namespace meal_plan_generator.Services
             }
         }
 
-        public decimal CalculateMSCORE(MealPlan mp)
+        public float CalculateMSCORE(MealPlan mp)
         {
             // Calculate MSCORE based on the current list of foods in the meal plan
             return mp.CalculateScore();
@@ -96,7 +96,7 @@ namespace meal_plan_generator.Services
                 FoundationFood food = SelectFood(nutrient.ComponentId);
 
                 // Calculate the new MSCORE after adding the food to the meal plan
-                decimal newMSCORE = CalculateMSCORE(mp);
+                float newMSCORE = CalculateMSCORE(mp);
 
                 // Check if any nutrient exceeds its upper bound after adding the food
                 bool nutrientExceedsUB = CheckForExceededNutrient(newMSCORE);

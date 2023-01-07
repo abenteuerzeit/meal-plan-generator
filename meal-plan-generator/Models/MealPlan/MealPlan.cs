@@ -31,9 +31,9 @@ namespace meal_plan_generator.Models.MealPlan
             Nutrients.Add(nutrient);
         }
 
-        public decimal CalculateScore()
+        public float CalculateScore()
         {
-            decimal totalScore = 0;
+            float totalScore = 0;
             //foreach (Nutrient nutrient in Nutrients)
             //{
             //    totalScore += nutrient.GetNutrientScore();
