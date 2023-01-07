@@ -21,7 +21,7 @@
         }
 
 
-        internal decimal GetNutrientAmount(string name)
+        internal float GetNutrientAmount(string name)
         {
             throw new NotImplementedException();
         }

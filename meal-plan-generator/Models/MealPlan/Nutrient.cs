@@ -10,28 +10,24 @@ namespace meal_plan_generator.Models.MealPlan
         public int Id { get; set; }
         public string Name { get; set; } = "Name not set";
         public string Unit { get; set; } = "Undefined";
-        public decimal MinAmount { get; set; }
-        public decimal IdealAmount { get; set; }
-        public decimal MaxAmount { get; set; }
-        public decimal CurrentNutrientQuantity { get; set; }
-        public NutrientSettings PrioritySettings { get; set; }
+        public float CurrentNutrientQuantity { get; set; }
+        public NutrientSettings Settings { get; set; }
         public ComponentId ComponentId { get; internal set; }
 
         public Nutrient()
         {
-            PrioritySettings = new NutrientSettings();
+            Settings = new NutrientSettings();
         }
         public Nutrient(ComponentId id)
         {
-            MinAmount = GetNutrientDefault(id);
-            PrioritySettings = new NutrientSettings();
+            Settings = new NutrientSettings();
         }
         private static decimal GetNutrientDefault(ComponentId id)
         {
             // TODO: Set default minimum values
             return 1;
         }
-        
+
 
         //public decimal GetNutrientScore()
         //{
@@ -76,7 +72,7 @@ namespace meal_plan_generator.Models.MealPlan
 
         public bool IsMet()
         {
-            return CurrentNutrientQuantity >= MinAmount && CurrentNutrientQuantity <= MaxAmount;
+            return CurrentNutrientQuantity >= Settings.LowerBound && CurrentNutrientQuantity <= Settings.UpperBound;
         }
     }
 }

@@ -78,7 +78,7 @@ namespace meal_plan_generator.Models.MealPlan
             Food selectedFood = topFoods[index];
 
             // Check if the selected food meets the criteria for the unmet nutrient
-            if (selectedFood.GetNutrientAmount(unmetNutrient.Name) >= unmetNutrient.IdealAmount)
+            if (selectedFood.GetNutrientAmount(unmetNutrient.Name) >= unmetNutrient.Settings.IdealAmount)
             {
                 return selectedFood;
             }
