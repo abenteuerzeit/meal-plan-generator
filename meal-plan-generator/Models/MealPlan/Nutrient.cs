@@ -10,7 +10,7 @@ namespace meal_plan_generator.Models.MealPlan
         public int Id { get; set; }
         public string Name { get; set; } = "Name not set";
         public string Unit { get; set; } = "Undefined";
-        public float CurrentNutrientQuantity { get; set; }
+        public float Quantity { get; set; }
         public NutrientSettings Settings { get; set; }
         public ComponentId ComponentId { get; internal set; }
 
@@ -72,7 +72,7 @@ namespace meal_plan_generator.Models.MealPlan
 
         public bool IsMet()
         {
-            return CurrentNutrientQuantity >= Settings.LowerBound && CurrentNutrientQuantity <= Settings.UpperBound;
+            return Quantity >= Settings.LowerBound && Quantity <= Settings.UpperBound;
         }
     }
 }
