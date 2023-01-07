@@ -5,6 +5,24 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace meal_plan_generator.Controllers
 {
+    // http://localhost/Controller/Action
+
+    /*
+     * https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/controllers-and-routing/aspnet-mvc-controllers-overview-cs
+        Action results:  
+        View() -> HTML and markup.
+        EmptyResult -> no result.
+        Redirect() -> a redirection to a new URL.
+            - RedirectToAction()
+            - RedirectToRoute()
+        Json() -> a JavaScript Object Notation result that can be used in an AJAX application.
+        JavaScriptResult() -> a JavaScript script.
+        Content("Hello Peter!") -> a plain text result, wraps non-action results such as Dates and Integers as a ContentResult, eg.: `return DateTime.Now;`
+        File()
+            - FileContentResult -> a downloadable file (with the binary content).
+            - FilePathResult ->  a downloadable file (with a path).
+            - FileStreamResult -> a downloadable file (with a file stream).
+     */
     public class MealPlansController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
