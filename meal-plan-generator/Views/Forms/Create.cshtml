@@ -22,20 +22,20 @@
                 <div class="row row-cols-3 align-items-start input-group">
                     <div class="col mb-3">
                         <div class="form-floating mb-3">
-                            <input asp-for=@nutrient.LowerBound class="form-control" min="0" step="any" type="number" placeholder="Enter the  @nutrient.Unit" />
-                            <label asp-for=@nutrient.LowerBound class="form-label">minimum (@nutrient.Unit)</label>
+                            <input asp-for=@nutrient.Settings.LowerBound class="form-control" min="0" step="any" type="number" placeholder="Enter the  @nutrient.Unit" />
+                            <label asp-for=@nutrient.Settings.LowerBound class="form-label">minimum (@nutrient.Unit)</label>
                         </div>
                     </div>
                     <div class="col mb-3">
                         <div class="form-floating mb-3">
-                            <input asp-for=@nutrient.IdealAmount class="form-control" min="0" step="any" type="number" placeholder=" @nutrient.Unit" />
-                            <label asp-for=@nutrient.IdealAmount class="form-label">ideal (@nutrient.Unit)</label>
+                            <input asp-for=@nutrient.Settings.IdealAmount class="form-control" min="0" step="any" type="number" placeholder=" @nutrient.Unit" />
+                            <label asp-for=@nutrient.Settings.IdealAmount class="form-label">ideal (@nutrient.Unit)</label>
                         </div>
                     </div>
                     <div class="col mb-3">
                         <div class="form-floating mb-3">
-                            <input asp-for=@nutrient.UpperBound class="form-control" min="0" step="any" type="number" placeholder=" @nutrient.Unit" />
-                            <label asp-for=@nutrient.UpperBound class="form-label">maximum (@nutrient.Unit)</label>
+                            <input asp-for=@nutrient.Settings.UpperBound class="form-control" min="0" step="any" type="number" placeholder=" @nutrient.Unit" />
+                            <label asp-for=@nutrient.Settings.UpperBound class="form-label">maximum (@nutrient.Unit)</label>
                         </div>
                     </div>
                 </div>

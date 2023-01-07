@@ -12,19 +12,29 @@
 <table class="table">
     <thead>
         <tr>
-            <th></th>
+            <th>Form ID</th>
+            <th>Nutrient Data</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-               <span>Form No. @item.Id</span>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <span>Form No. @item.Id</span>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+                <td>
+                    @foreach (var nutrient in item.NutrientData)
+                    {
+                        <span>@nutrient.Name: @nutrient.Unit</span>
+
+                        <br />
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
