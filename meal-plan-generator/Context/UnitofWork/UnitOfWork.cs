@@ -1,6 +1,6 @@
 ﻿using meal_plan_generator.Context;
 using meal_plan_generator.Models.MealPlan;
-using meal_plan_generator.Models.USDA;
+using meal_plan_generator.Models;
 using meal_plan_generator.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +10,7 @@ namespace meal_plan_generator.Context.UnitofWork
     {
         private readonly AppDbContext _context;
 
-        public IRepository<Form> FormRepository { get; }
+        public IRepository<Form> FormsRepo { get; }
         public IRepository<Food> FakeFoodsRepo { get; }
         public IRepository<MealPlan> MealPlanRepo { get; }
 
@@ -19,11 +19,9 @@ namespace meal_plan_generator.Context.UnitofWork
             _context = context;
             if (!_context.Foods.Any())
                 FakeData.Initialize(_context);
-            FormRepository = formRepo;
+            FormsRepo = formRepo;
             FakeFoodsRepo = dataRepo;
             MealPlanRepo = mealPlan;
-            
-
         }
 
         public void Save()
