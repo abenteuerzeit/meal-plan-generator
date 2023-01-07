@@ -4,13 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace meal_plan_generator.Models.MealPlan
 {
-    public class Nutrient
+    public class Nutrient : EntityBase
     {
-        [Key]
-        public int Id { get; set; }
         public string Name { get; set; } = "Name not set";
         public string Unit { get; set; } = "Undefined";
         public float Quantity { get; set; }
+        public int NutrientSettingsId { get; set; }
         public NutrientSettings Settings { get; set; }
         public ComponentId ComponentId { get; internal set; }
 

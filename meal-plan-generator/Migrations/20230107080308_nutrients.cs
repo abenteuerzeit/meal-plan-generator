@@ -4,7 +4,7 @@
 
 namespace meal_plan_generator.Migrations
 {
-    public partial class forms : Migration
+    public partial class nutrients : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,18 +34,12 @@ namespace meal_plan_generator.Migrations
             migrationBuilder.RenameColumn(
                 name: "PrioritySettingsId",
                 table: "Nutrient",
-                newName: "SettingsId");
+                newName: "NutrientSettingsId");
 
             migrationBuilder.RenameIndex(
                 name: "IX_Nutrient_PrioritySettingsId",
                 table: "Nutrient",
-                newName: "IX_Nutrient_SettingsId");
-
-            migrationBuilder.AddColumn<int>(
-                name: "FormId",
-                table: "NutrientSettings",
-                type: "int",
-                nullable: true);
+                newName: "IX_Nutrient_NutrientSettingsId");
 
             migrationBuilder.AddColumn<float>(
                 name: "IdealAmount",
@@ -68,19 +62,12 @@ namespace meal_plan_generator.Migrations
                 nullable: false,
                 defaultValue: 0f);
 
-            migrationBuilder.AddColumn<string>(
-                name: "Name",
+            migrationBuilder.AddColumn<int>(
+                name: "NutrientId",
                 table: "NutrientSettings",
-                type: "nvarchar(max)",
+                type: "int",
                 nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Unit",
-                table: "NutrientSettings",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                defaultValue: 0);
 
             migrationBuilder.AddColumn<float>(
                 name: "UpperBound",
@@ -95,6 +82,12 @@ namespace meal_plan_generator.Migrations
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
+
+            migrationBuilder.AddColumn<int>(
+                name: "FormId",
+                table: "Nutrient",
+                type: "int",
+                nullable: true);
 
             migrationBuilder.AddColumn<float>(
                 name: "Quantity",
@@ -104,43 +97,39 @@ namespace meal_plan_generator.Migrations
                 defaultValue: 0f);
 
             migrationBuilder.CreateIndex(
-                name: "IX_NutrientSettings_FormId",
-                table: "NutrientSettings",
+                name: "IX_Nutrient_FormId",
+                table: "Nutrient",
                 column: "FormId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Nutrient_NutrientSettings_SettingsId",
+                name: "FK_Nutrient_Forms_FormId",
                 table: "Nutrient",
-                column: "SettingsId",
-                principalTable: "NutrientSettings",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_NutrientSettings_Forms_FormId",
-                table: "NutrientSettings",
                 column: "FormId",
                 principalTable: "Forms",
                 principalColumn: "Id");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Nutrient_NutrientSettings_NutrientSettingsId",
+                table: "Nutrient",
+                column: "NutrientSettingsId",
+                principalTable: "NutrientSettings",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Nutrient_NutrientSettings_SettingsId",
+                name: "FK_Nutrient_Forms_FormId",
                 table: "Nutrient");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_NutrientSettings_Forms_FormId",
-                table: "NutrientSettings");
+                name: "FK_Nutrient_NutrientSettings_NutrientSettingsId",
+                table: "Nutrient");
 
             migrationBuilder.DropIndex(
-                name: "IX_NutrientSettings_FormId",
-                table: "NutrientSettings");
-
-            migrationBuilder.DropColumn(
-                name: "FormId",
-                table: "NutrientSettings");
+                name: "IX_Nutrient_FormId",
+                table: "Nutrient");
 
             migrationBuilder.DropColumn(
                 name: "IdealAmount",
@@ -155,11 +144,7 @@ namespace meal_plan_generator.Migrations
                 table: "NutrientSettings");
 
             migrationBuilder.DropColumn(
-                name: "Name",
-                table: "NutrientSettings");
-
-            migrationBuilder.DropColumn(
-                name: "Unit",
+                name: "NutrientId",
                 table: "NutrientSettings");
 
             migrationBuilder.DropColumn(
@@ -171,16 +156,20 @@ namespace meal_plan_generator.Migrations
                 table: "NutrientSettings");
 
             migrationBuilder.DropColumn(
+                name: "FormId",
+                table: "Nutrient");
+
+            migrationBuilder.DropColumn(
                 name: "Quantity",
                 table: "Nutrient");
 
             migrationBuilder.RenameColumn(
-                name: "SettingsId",
+                name: "NutrientSettingsId",
                 table: "Nutrient",
                 newName: "PrioritySettingsId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Nutrient_SettingsId",
+                name: "IX_Nutrient_NutrientSettingsId",
                 table: "Nutrient",
                 newName: "IX_Nutrient_PrioritySettingsId");
 

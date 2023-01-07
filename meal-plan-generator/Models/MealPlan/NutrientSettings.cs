@@ -3,12 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace meal_plan_generator.Models.MealPlan
 {
-    public class NutrientSettings
+    public class NutrientSettings : EntityBase
     {
-        [Key, Required]
-        public int Id { get; set; }
 
-        [Required]
+        [ForeignKey(nameof(Nutrient)), Required]
         public int NutrientId { get; set; }
 
         [Required]

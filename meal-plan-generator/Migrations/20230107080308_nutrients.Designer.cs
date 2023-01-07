@@ -12,8 +12,8 @@ using meal_plan_generator.Context;
 namespace meal_plan_generator.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230107054324_forms")]
-    partial class forms
+    [Migration("20230107080308_nutrients")]
+    partial class nutrients
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -90,15 +90,18 @@ namespace meal_plan_generator.Migrations
                     b.Property<int?>("FoodId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("FormId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("NutrientSettingsId")
+                        .HasColumnType("int");
+
                     b.Property<float>("Quantity")
                         .HasColumnType("real");
-
-                    b.Property<int>("SettingsId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Unit")
                         .IsRequired()
@@ -108,7 +111,9 @@ namespace meal_plan_generator.Migrations
 
                     b.HasIndex("FoodId");
 
-                    b.HasIndex("SettingsId");
+                    b.HasIndex("FormId");
+
+                    b.HasIndex("NutrientSettingsId");
 
                     b.ToTable("Nutrient");
                 });
@@ -121,9 +126,6 @@ namespace meal_plan_generator.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("FormId")
-                        .HasColumnType("int");
-
                     b.Property<float>("IdealAmount")
                         .HasColumnType("real");
 
@@ -133,13 +135,8 @@ namespace meal_plan_generator.Migrations
                     b.Property<float>("LowerBound")
                         .HasColumnType("real");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Unit")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("NutrientId")
+                        .HasColumnType("int");
 
                     b.Property<float>("UpperBound")
                         .HasColumnType("real");
@@ -148,8 +145,6 @@ namespace meal_plan_generator.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FormId");
 
                     b.ToTable("NutrientSettings");
                 });
@@ -160,20 +155,17 @@ namespace meal_plan_generator.Migrations
                         .WithMany("Nutrients")
                         .HasForeignKey("FoodId");
 
+                    b.HasOne("meal_plan_generator.Models.MealPlan.Form", null)
+                        .WithMany("NutrientData")
+                        .HasForeignKey("FormId");
+
                     b.HasOne("meal_plan_generator.Models.MealPlan.NutrientSettings", "Settings")
                         .WithMany()
-                        .HasForeignKey("SettingsId")
+                        .HasForeignKey("NutrientSettingsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Settings");
-                });
-
-            modelBuilder.Entity("meal_plan_generator.Models.MealPlan.NutrientSettings", b =>
-                {
-                    b.HasOne("meal_plan_generator.Models.MealPlan.Form", null)
-                        .WithMany("NutrientData")
-                        .HasForeignKey("FormId");
                 });
 
             modelBuilder.Entity("meal_plan_generator.Models.MealPlan.Food", b =>
