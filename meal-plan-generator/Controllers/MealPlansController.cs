@@ -35,8 +35,6 @@ namespace meal_plan_generator.Controllers
         public IActionResult Index()
         {
             Form form = new Form();
-
-            // Pass the form instance as a model to the view
             return View(form);
         }
 
