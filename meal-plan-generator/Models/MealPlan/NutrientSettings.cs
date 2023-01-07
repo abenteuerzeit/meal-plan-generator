@@ -8,8 +8,8 @@ namespace meal_plan_generator.Models.MealPlan
         [Key, Required]
         public int Id { get; set; }
 
-        public string Name { get; set; } = "";
-        public string Unit { get; set; } = "";
+        [Required]
+        public int NutrientId { get; set; }
 
         [Required]
         public int Weight { get; set; } = 1;
@@ -25,6 +25,8 @@ namespace meal_plan_generator.Models.MealPlan
 
         [Range(0, int.MaxValue, ErrorMessage = "Only positive values allowed.")]
         public float UpperBound { get; set; }
+
+        public NutrientSettings() { }
 
     }
 }
