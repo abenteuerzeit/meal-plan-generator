@@ -1,13 +1,15 @@
 ﻿using meal_plan_generator.Models.USDA;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace meal_plan_generator.Models.MealPlan
 {
     public class Nutrient : EntityBase
     {
-        public string Name { get; set; } = "Name not set";
-        public string Unit { get; set; } = "Undefined";
+        public string Name { get; set; }
+        public string Unit { get; set; }
         public float Quantity { get; set; }
         public int NutrientSettingsId { get; set; }
         public NutrientSettings Settings { get; set; }
@@ -15,16 +17,40 @@ namespace meal_plan_generator.Models.MealPlan
 
         public Nutrient()
         {
+            Name = "undefined";
+            Unit = "undefined";
+            Quantity = 0;
             Settings = new NutrientSettings();
         }
+
+        public Nutrient(string name, string unit)
+        {
+            Name = name;
+            Unit = unit;
+            Quantity = 0;
+            Settings = new NutrientSettings();
+        }
+
+
+        public Nutrient(string name, float quantity, string unit)
+        {
+            Name = name;
+            Unit = unit;
+            Quantity = quantity;
+            Settings = new NutrientSettings();
+        }
+
         public Nutrient(ComponentId id)
         {
-            Settings = new NutrientSettings();
+            Name = "";
+            Unit = "";
+            Quantity = 0;
+            Settings = GetNutrientDefault(id);
         }
-        private static decimal GetNutrientDefault(ComponentId id)
+        private static NutrientSettings GetNutrientDefault(ComponentId id)
         {
             // TODO: Set default minimum values
-            return 1;
+            return new();
         }
 
 

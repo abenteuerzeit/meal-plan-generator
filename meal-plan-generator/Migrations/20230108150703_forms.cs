@@ -4,7 +4,7 @@
 
 namespace meal_plan_generator.Migrations
 {
-    public partial class nutrients : Migration
+    public partial class forms : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

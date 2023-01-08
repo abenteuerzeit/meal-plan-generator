@@ -12,8 +12,8 @@ using meal_plan_generator.Context;
 namespace meal_plan_generator.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230107080308_nutrients")]
-    partial class nutrients
+    [Migration("20230108150703_forms")]
+    partial class forms
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -156,7 +156,7 @@ namespace meal_plan_generator.Migrations
                         .HasForeignKey("FoodId");
 
                     b.HasOne("meal_plan_generator.Models.MealPlan.Form", null)
-                        .WithMany("NutrientData")
+                        .WithMany("Nutrients")
                         .HasForeignKey("FormId");
 
                     b.HasOne("meal_plan_generator.Models.MealPlan.NutrientSettings", "Settings")
@@ -175,7 +175,7 @@ namespace meal_plan_generator.Migrations
 
             modelBuilder.Entity("meal_plan_generator.Models.MealPlan.Form", b =>
                 {
-                    b.Navigation("NutrientData");
+                    b.Navigation("Nutrients");
                 });
 #pragma warning restore 612, 618
         }

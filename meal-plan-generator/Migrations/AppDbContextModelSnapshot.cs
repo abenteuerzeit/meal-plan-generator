@@ -154,7 +154,7 @@ namespace meal_plan_generator.Migrations
                         .HasForeignKey("FoodId");
 
                     b.HasOne("meal_plan_generator.Models.MealPlan.Form", null)
-                        .WithMany("NutrientData")
+                        .WithMany("Nutrients")
                         .HasForeignKey("FormId");
 
                     b.HasOne("meal_plan_generator.Models.MealPlan.NutrientSettings", "Settings")
@@ -173,7 +173,7 @@ namespace meal_plan_generator.Migrations
 
             modelBuilder.Entity("meal_plan_generator.Models.MealPlan.Form", b =>
                 {
-                    b.Navigation("NutrientData");
+                    b.Navigation("Nutrients");
                 });
 #pragma warning restore 612, 618
         }

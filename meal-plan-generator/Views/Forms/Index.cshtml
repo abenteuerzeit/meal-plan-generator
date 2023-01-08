@@ -27,7 +27,7 @@
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
                 <td>
-                    @foreach (var nutrient in item.NutrientData)
+                    @foreach (var nutrient in item.Nutrients)
                     {
                         <span>@nutrient.Name: @nutrient.Unit</span>
 

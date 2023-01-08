@@ -8,15 +8,18 @@ using Microsoft.EntityFrameworkCore;
 using meal_plan_generator.Context;
 using meal_plan_generator.Models.MealPlan;
 using meal_plan_generator.Context.UnitofWork;
+using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 
 namespace meal_plan_generator.Controllers
 {
     public class FormsController : Controller
     {
         private readonly IUnitOfWork _uow;
-        public FormsController(IUnitOfWork uow)
+        private readonly ILogger<FormsController> _logger;
+        public FormsController(IUnitOfWork uow, ILogger<FormsController> logger)
         {
             _uow = uow;
+            _logger = logger;
         }
 
         // GET: Forms
@@ -45,7 +48,15 @@ namespace meal_plan_generator.Controllers
         // GET: Forms/Create
         public IActionResult Create()
         {
-            return View(new Form());
+            var form = new Form();
+            _logger.LogInformation($"Create action called with new form Id: {form.Id}");
+            foreach (var n in form.Nutrients)
+            {
+                _logger.LogInformation($"Nutrient {n.Id}, {n.Name}, {n.Quantity} {n.Unit}");
+                _logger.LogInformation($"Settings {n.Settings.Id}, {n.Settings.LowerBound}, {n.Settings.IdealAmount} {n.Settings.UpperBound}");
+                _logger.LogInformation($"Intercept: {n.Settings.Intercept}, Weight: {n.Settings.Weight}");
+            }
+            return View(form);
         }
 
         // POST: Forms/Create
@@ -53,19 +64,17 @@ namespace meal_plan_generator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id")] Form form)
+        public async Task<IActionResult> Create([Bind] Form form)
         {
+            _logger.LogInformation($"Form received by Create action: {form}");
             if (ModelState.IsValid)
             {
-
+                _logger.LogInformation("Form data: {@FormData}", form);
                 await _uow.FormsRepo.InsertRecordAsync(form);
                 await _uow.FormsRepo.SaveChangesAsync();
-
-                Form check = await _uow.FormsRepo.GetByIdAsync(form.Id);
-
-                return Content(check.ToString()); //RedirectToAction(nameof(Index));
+                return Json(form);
             }
-            return View(form);
+            return View();
         }
 
         // GET: Forms/Edit/5

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace meal_plan_generator.Models.MealPlan
@@ -10,19 +12,24 @@ namespace meal_plan_generator.Models.MealPlan
         public int NutrientId { get; set; }
 
         [Required]
+        [DisplayName("importance")]
         public int Weight { get; set; } = 1;
         [Required]
+        [DisplayName("default")]
         public int Intercept { get; set; } = 1;
 
 
         [Range(0, int.MaxValue, ErrorMessage = "Only positive values allowed.")]
-        public float LowerBound { get; set; }
+        [DisplayName("minimum")]
+        public double LowerBound { get; set; } = 0;
 
         [Range(0, int.MaxValue, ErrorMessage = "Only positive values allowed.")]
-        public float IdealAmount { get; set; }
+        [DisplayName("ideal")]
+        public double IdealAmount { get; set; } = 0;
 
         [Range(0, int.MaxValue, ErrorMessage = "Only positive values allowed.")]
-        public float UpperBound { get; set; }
+        [DisplayName("maximum")]
+        public double UpperBound { get; set; } = 0;
 
         public NutrientSettings() { }
 

@@ -5,6 +5,7 @@ using meal_plan_generator.Models.USDA;
 using meal_plan_generator.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace meal_plan_generator
@@ -25,6 +26,12 @@ namespace meal_plan_generator
             // Add services to the container.
 
             var services = builder.Services;
+
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddConsole();
+                loggingBuilder.AddDebug();
+            });
 
             //services.AddDbContext<MealPlanDbContext>(options =>
             //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -49,6 +56,8 @@ namespace meal_plan_generator
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            ILoggerFactory loggerFactory = app.Services.GetRequiredService<ILoggerFactory>();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

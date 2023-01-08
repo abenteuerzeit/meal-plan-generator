@@ -1,67 +1,61 @@
 ﻿using meal_plan_generator.Models.MealPlan;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Xml.Linq;
 
 namespace meal_plan_generator.Models.MealPlan
 {
     public class Form : EntityBase
     {
         [Required]
-        public ICollection<Nutrient> NutrientData { get; set; }
+        [DisplayName("Nutrient Data")]
+        public virtual IList<Nutrient> Nutrients { get; set; }
 
         public Form()
         {
-            NutrientData = SetDefaultNutrientData();
+            Nutrients = SetDefaultNutrientData();
         }
 
-        public Form(HashSet<Nutrient> nutrients)
+        public Form(IList<Nutrient> nutrients)
         {
-            NutrientData = nutrients;
+            Nutrients = nutrients;
         }
 
-        private static HashSet<Nutrient> SetDefaultNutrientData()
+        private static List<Nutrient> SetDefaultNutrientData()
         {
-            return new HashSet<Nutrient>
+            return new List<Nutrient>
             {
-                new Nutrient { Name = "Calcium", Unit = "mg", Settings = new NutrientSettings { LowerBound = 1000, UpperBound = 1300 } },
-                new Nutrient { Name = "Phosphorus", Unit = "mg", Settings = new NutrientSettings { LowerBound = 1000, IdealAmount = 1250 } },
-                new Nutrient { Name = "Magnesium", Unit = "mg", Settings = new NutrientSettings { LowerBound = 400, IdealAmount = 420 } },
-                new Nutrient { Name = "Potassium", Unit = "mg", Settings = new NutrientSettings { LowerBound = 3500, IdealAmount = 4700 } },
-                new Nutrient { Name = "Sodium", Unit = "mg", Settings = new NutrientSettings { IdealAmount = 2300, UpperBound = 2400 } },
-                new Nutrient { Name = "Iron", Unit = "mg", Settings = new NutrientSettings { LowerBound = 18 } },
-                new Nutrient { Name = "Manganese", Unit = "mg", Settings = new NutrientSettings { LowerBound = 2, IdealAmount = 2.3F } },
-                new Nutrient { Name = "Copper", Unit = "mg", Settings = new NutrientSettings { IdealAmount = 0.9F, UpperBound = 2 } },
-                new Nutrient { Name = "Zinc", Unit = "mg", Settings = new NutrientSettings { IdealAmount = 11, UpperBound = 15 } },
-                new Nutrient { Name = "Selenium", Unit = "mcg", Settings = new NutrientSettings { IdealAmount = 55, UpperBound = 70 } },
-                new Nutrient { Name = "Vitamin A", Unit = "mcg", Settings = new NutrientSettings { LowerBound = 5000, IdealAmount = 5000 } },
-                new Nutrient { Name = "Vitamin C", Unit = "mg", Settings = new NutrientSettings { LowerBound = 60, IdealAmount = 90 } },
-                new Nutrient { Name = "Vitamin E", Unit = "mg", Settings = new NutrientSettings { LowerBound = 15, IdealAmount = 15 } },
-                new Nutrient { Name = "Vitamin K", Unit = "mcg", Settings = new NutrientSettings { LowerBound = 80, IdealAmount = 120 } },
-                new Nutrient { Name = "Thiamin", Unit = "mg", Settings = new NutrientSettings { LowerBound = 1.2F, IdealAmount = 1.5F } },
-                new Nutrient { Name = "Roboflavin", Unit = "mg", Settings = new NutrientSettings { LowerBound = 1.3F, IdealAmount = 1.7F } },
-                new Nutrient { Name = "Niacin", Unit = "mg", Settings = new NutrientSettings { IdealAmount = 16, UpperBound = 20 } },
-                new Nutrient { Name = "Pantothenic Acid", Unit = "mg", Settings = new NutrientSettings { IdealAmount = 5, UpperBound = 10 } },
-                new Nutrient { Name = "Folate", Unit = "mcg", Settings = new NutrientSettings { LowerBound = 400 } }
+                new Nutrient("Calcium", "mg") { Settings = new NutrientSettings { LowerBound = 1000, IdealAmount = 1150, UpperBound = 1300 } },
+                new Nutrient("Phosphorus", "mg") { Settings = new NutrientSettings { LowerBound = 1000, IdealAmount = 1250, UpperBound = 1300 } },
+                new Nutrient("Magnesium", "mg") { Settings = new NutrientSettings { LowerBound = 400, IdealAmount = 410, UpperBound = 420 } },
+                new Nutrient("Potasium", "mg") { Settings = new NutrientSettings { LowerBound = 3500, IdealAmount=4000, UpperBound = 4700 } },
+                new Nutrient("Sodium", "mg") { Settings = new NutrientSettings { LowerBound = 0, IdealAmount = 0, UpperBound = 2400 } },
+                new Nutrient("Iron", "mg") { Settings = new NutrientSettings { LowerBound = 18, IdealAmount = 20, UpperBound = 25 } },
+                new Nutrient("Manganese", "mg") { Settings = new NutrientSettings { LowerBound = 2, IdealAmount = 3, UpperBound = 4 } },
+                new Nutrient("Copper", "mg") { Settings = new NutrientSettings { LowerBound = 0, IdealAmount = 1, UpperBound = 2 } },
+                new Nutrient("Zinc", "mg") { Settings = new NutrientSettings { LowerBound = 0, IdealAmount = 11, UpperBound = 15 } },
+                new Nutrient("Selenium", "mcg") { Settings = new NutrientSettings {LowerBound = 0, IdealAmount = 55, UpperBound = 70 } },
+                new Nutrient("Vitamin A", "mcg") { Settings = new NutrientSettings { LowerBound = 5000, IdealAmount = 5000, UpperBound=5500} },
+                new Nutrient("Vitamin C", "mg") { Settings = new NutrientSettings { LowerBound = 60, IdealAmount = 90, UpperBound=100} },
+                new Nutrient("Vitamin E", "mg") { Settings = new NutrientSettings { LowerBound = 15, IdealAmount = 15, UpperBound=20 } },
+                new Nutrient("Vitamin K", "mcg") { Settings = new NutrientSettings { LowerBound = 80, IdealAmount = 120, UpperBound=140 } },
+                new Nutrient("Thiamin", "mg") { Settings = new NutrientSettings { LowerBound = 1, IdealAmount = 2, UpperBound = 2 } },
+                new Nutrient("Roboflavin", "mg") { Settings = new NutrientSettings { LowerBound = 1, IdealAmount = 2, UpperBound = 3 } },
+                new Nutrient("Niacin", "mg") { Settings = new NutrientSettings { LowerBound = 0, IdealAmount = 16, UpperBound = 20 } },
+                new Nutrient("Pantothenic Acid", "mg") { Settings = new NutrientSettings { LowerBound = 0, IdealAmount = 5, UpperBound = 10 } },
+                new Nutrient("Folate", "mcg") { Settings = new NutrientSettings { LowerBound = 400, IdealAmount = 400, UpperBound = 1000 } }
             };
-        }
-
-        public ICollection<Nutrient> GetNutrientSettings()
-        {
-            return new List<Nutrient>();
-        }
-
-        public void SetNutrientData(ICollection<Nutrient> nutrientData)
-        {
-            NutrientData = nutrientData;
         }
 
         public override string ToString()
         {
             StringBuilder sb = new();
             sb.AppendLine("Nutrient Data:");
-            foreach (Nutrient nutrient in NutrientData)
+            foreach (Nutrient nutrient in Nutrients)
             {
                 sb.AppendLine($"{nutrient.Name}: {nutrient.Settings.IdealAmount} {nutrient.Unit} (Lower Bound: {nutrient.Settings.LowerBound}, Upper Bound: {nutrient.Settings.UpperBound})");
             }
