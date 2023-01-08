@@ -31,7 +31,7 @@
                     </div>
                     <div class="col mb-2">
                         <div class="form-floating mb-2">
-                            @Html.EditorFor(model => Model.Nutrients[i].Settings.Intercept,  new { htmlAttributes = new { @class = "form-control", min = "1", step = "1", type = "number", placeholder = $"Enter the line slope", name = "Weight" } })
+                            @Html.EditorFor(model => Model.Nutrients[i].Settings.Intercept,  new { htmlAttributes = new { @class = "form-control", min = "1", step = "1", type = "number", placeholder = $"Enter the line slope", name = "Intercept" } })
                             @Html.LabelFor(model => Model.Nutrients[i].Settings.Intercept, new { htmlAttributes = new { @class = "form-label" } })
                         </div>
                     </div>
