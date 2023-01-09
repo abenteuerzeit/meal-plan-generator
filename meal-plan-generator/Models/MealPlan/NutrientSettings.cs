@@ -1,27 +1,37 @@
-﻿namespace meal_plan_generator.Models.MealPlan
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace meal_plan_generator.Models.MealPlan
 {
-    public class NutrientSettings
+    public class NutrientSettings : EntityBase
     {
-        public Dictionary<string, int> LessThanMax { get; set; } = useDefaults();
-        public Dictionary<string, int> MoreThanMin { get; set; } = useDefaults();
-        public Dictionary<string, int> LessThanMin { get; set; } = useDefaults();
+
+        [ForeignKey(nameof(Nutrient)), Required]
+        public int NutrientId { get; set; }
+
+        [Required]
+        [DisplayName("importance")]
+        public int Weight { get; set; } = 1;
+        [Required]
+        [DisplayName("default")]
+        public int Intercept { get; set; } = 1;
 
 
-        NutrientSettings(Dictionary<string, int> lessThanMax, Dictionary<string, int> moreThanMin, Dictionary<string, int> lessThanMin)
-        {
+        [Range(0, int.MaxValue, ErrorMessage = "Only positive values allowed.")]
+        [DisplayName("minimum")]
+        public double LowerBound { get; set; } = 0;
 
-            LessThanMax = lessThanMax;
-            MoreThanMin = moreThanMin;
-            LessThanMin = lessThanMin;
-        }
+        [Range(0, int.MaxValue, ErrorMessage = "Only positive values allowed.")]
+        [DisplayName("ideal")]
+        public double IdealAmount { get; set; } = 0;
 
-        private static Dictionary<string, int> useDefaults()
-        {
-            return new Dictionary<string, int>()
-                {
-                    { "Weight", 1 },
-                    { "Intercept", 1 }
-                };
-        }
+        [Range(0, int.MaxValue, ErrorMessage = "Only positive values allowed.")]
+        [DisplayName("maximum")]
+        public double UpperBound { get; set; } = 0;
+
+        public NutrientSettings() { }
+
     }
 }

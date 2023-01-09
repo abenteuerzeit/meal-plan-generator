@@ -1,0 +1,139 @@
+﻿/*Meal Plan form style*/
+.form {
+    width: 60%;
+    max-width: 500px;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+.form__title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form__section {
+    /* common styles for all sections */
+    margin-bottom: 2rem;
+}
+
+.form__section--personal-data {
+    /* additional styles for the personal data section */
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.form__section--nutrient-data {
+    /* additional styles for the nutrient data section */
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+.form__section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form__row {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: start;
+    justify-content: space-between;
+    margin-bottom: 1.618rem;
+    background-color: gainsboro;
+    border-radius: 1rem;
+}
+
+.form__row-item {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form__label {
+    flex-basis: 30%;
+    font-size: 1rem;
+    align-self: center;
+}
+
+.form__nutrient {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form__nutrient-name {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    flex-basis: 40%;
+}
+
+.form__input {
+    width: 50%;
+    align-self: center;
+}
+
+
+    .form__input:focus {
+        border-color: #aaa;
+    }
+
+.form__unit {
+    align-self: center;
+}
+
+.form__button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #0070f3;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+    .form__button:hover {
+        background-color: #0056b3;
+    }
+
+    .form__button:active {
+        background-color: #004c9c;
+    }
+
+    .form__button:disabled {
+        background-color: #ccc;
+        cursor: default;
+    }
+
+@media (max-width: 600px) {
+    .form__row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .form__nutrient {
+        flex-direction: column;
+    }
+
+    .form__nutrient-name {
+        margin-bottom: 0.5rem;
+    }
+
+    .form__input {
+        width: 100%;
+    }
+}

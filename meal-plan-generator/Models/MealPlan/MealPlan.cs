@@ -1,57 +1,49 @@
-﻿namespace meal_plan_generator.Models.MealPlan
-{
-    public class MealPlan
-    {
-        private List<Food> foods;
-        private List<Nutrient> nutrients;
+﻿using meal_plan_generator.Models.USDA;
+using System.ComponentModel.DataAnnotations;
 
-        // TODO: Generate a FDA Nutrition Facts label for the Meal Plan
-        //private string servingSize = "1 1/2 cup (208g)";
-        //private int servingsPerContainer = 4;
-        //private int caloriesPerServing = 240;
-        //private double totalFatPerServing = 4;
-        //private double saturatedFatPerServing = 1.5;
-        //private int cholesterolPerServing = 5;
-        //private int sodiumPerServing = 430;
-        //private double totalCarbohydratePerServing = 46;
-        //private double dietaryFiberPerServing = 7;
-        //private double totalSugarsPerServing = 4;
-        //private double addedSugarsPerServing = 2;
-        //private int proteinPerServing = 11;
-        //private double vitaminDPerServing = 2;
-        //private double calciumPerServing = 260;
-        //private double ironPerServing = 6;
-        //private double potassiumPerServing = 240;
+namespace meal_plan_generator.Models.MealPlan
+{
+    public class MealPlan : EntityBase
+    {
+        //[Key]
+        //public int Id { get; set; }
+        public List<FoundationFood> FoundationFoods;
+        public List<Nutrient> Nutrients;
 
         public MealPlan()
         {
-            foods = new List<Food>();
-            nutrients = new List<Nutrient>();
+            FoundationFoods = new List<FoundationFood>();
+            Nutrients = new List<Nutrient>();
         }
 
-        public void AddFood(Food food)
+        public void AddFood(FoundationFood food)
         {
-            foods.Add(food);
+            FoundationFoods.Add(food);
+        }
+
+        public void removeFood(FoundationFood food)
+        {
+            FoundationFoods.Remove(food);
         }
 
         public void AddNutrient(Nutrient nutrient)
         {
-            nutrients.Add(nutrient);
+            Nutrients.Add(nutrient);
         }
 
-        public decimal CalculateScore()
+        public float CalculateScore()
         {
-            decimal totalScore = 0;
-            foreach (Nutrient nutrient in nutrients)
-            {
-                totalScore += nutrient.GetNutrientScore();
-            }
-            return totalScore / nutrients.Count;
+            float totalScore = 0;
+            //foreach (Nutrient nutrient in Nutrients)
+            //{
+            //    totalScore += nutrient.GetNutrientScore();
+            //}
+            return totalScore / Nutrients.Count;
         }
 
         public bool IsAcceptable()
         {
-            foreach (Nutrient nutrient in nutrients)
+            foreach (Nutrient nutrient in Nutrients)
             {
                 if (!nutrient.IsMet())
                 {
@@ -65,7 +57,7 @@
         {
             // Find the next unmet nutrient
             Nutrient? unmetNutrient = null;
-            foreach (Nutrient nutrient in nutrients)
+            foreach (Nutrient nutrient in Nutrients)
             {
                 if (!nutrient.IsMet())
                 {
@@ -86,7 +78,7 @@
             Food selectedFood = topFoods[index];
 
             // Check if the selected food meets the criteria for the unmet nutrient
-            if (selectedFood.GetNutrientAmount(unmetNutrient.Name) >= unmetNutrient.IdealAmount)
+            if (selectedFood.GetNutrientAmount(unmetNutrient.Name) >= unmetNutrient.Settings.IdealAmount)
             {
                 return selectedFood;
             }
