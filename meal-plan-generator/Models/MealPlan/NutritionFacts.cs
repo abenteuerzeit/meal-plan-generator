@@ -1,7 +1,11 @@
-﻿namespace meal_plan_generator.Models.MealPlan
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace meal_plan_generator.Models.MealPlan
 {
     public class NutritionFacts
     {
+        [Key]
+        public int Id { get; set; }
         public double ServingSize { get; set; }
         public double Calories { get; set; }
         public double Fat { get; set; }
@@ -49,11 +53,6 @@
                 {"sugar", Sugar },
                 // TODO: Complete the dictionary 
             };
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
         }
     }
 }

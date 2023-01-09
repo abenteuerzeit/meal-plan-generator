@@ -1,0 +1,17 @@
+﻿@model IEnumerable<meal_plan_generator.Models.MealPlan.Food>
+
+@{
+    ViewData["Title"] = "Food List";
+}
+
+<h1>Food List</h1>
+
+<ul>
+    @foreach(var item in Model)
+    {
+        <li>@item.Name</li>
+    }
+
+    
+</ul>
+
