@@ -1,3 +1,5 @@
+using meal_plan_generator.Data;
+using meal_plan_generator.Data.Repository;
 using meal_plan_generator.Context;
 using meal_plan_generator.Context.UnitofWork;
 using meal_plan_generator.Models.MealPlan;
@@ -24,7 +26,6 @@ namespace meal_plan_generator
                             .Build();
 
             // Add services to the container.
-
             var services = builder.Services;
 
             services.AddLogging(loggingBuilder =>
@@ -44,7 +45,7 @@ namespace meal_plan_generator
             services.AddScoped<IRepository<MealPlan>, Repository<MealPlan>>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+            
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();

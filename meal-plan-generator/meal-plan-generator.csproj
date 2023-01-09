@@ -6,12 +6,18 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>meal_plan_generator</RootNamespace>
   </PropertyGroup>
-
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\css\nutrition-label.css" />
   </ItemGroup>
-
   <ItemGroup>
+    <None Remove="Data\" />
+    <None Remove="Data\Repository\" />
+    <None Remove="Models\Entity\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Data\Repository\" />
+    <Folder Include="Models\Entity\" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.12">
@@ -23,7 +29,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.11" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Remove="Context\FakeDbContext.cs" />
     <Compile Remove="Context\IMealPlanDbContext.cs" />
