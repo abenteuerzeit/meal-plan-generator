@@ -18,7 +18,7 @@ namespace meal_plan_generator.Context
             context.SaveChanges();
         }
 
-        private static IEnumerable<Food> GenerateFoods(int amount)
+        public static IEnumerable<Food> GenerateFoods(int amount)
         {
             var foods = new List<Food>();
 

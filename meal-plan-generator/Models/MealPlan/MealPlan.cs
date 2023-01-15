@@ -6,7 +6,6 @@ namespace meal_plan_generator.Models.MealPlan
     public class MealPlan : EntityBase
     {
         public List<Food> Foods { get; set; }
-
         public MealPlan()
         {
             Foods = new List<Food>();
@@ -27,13 +26,39 @@ namespace meal_plan_generator.Models.MealPlan
             Foods.Add(nutrient);
         }
 
-        public double CalculateScore(List<Nutrient> nutrients)
+        public double CalculateScore()
         {
+            //var nutDict = Foods.SelectMany(f => f.Nutrients)
+            //                    .GroupBy(n => n.Name)
+            //                    .ToDictionary(g => g.Key, g => g.Sum(x => x.Quantity));
+
+
             double totalScore = 0;
-            foreach (var nutrient in nutrients)
+            do
             {
-                totalScore += nutrient.GetNutrientScore(nutrient.Settings);
+                var nutDict = new Dictionary<Nutrient, double>();
+            foreach (var food in Foods)
+            {
+                foreach (Nutrient nutrient in food.Nutrients)
+                {
+                    if (nutDict.ContainsKey(nutrient))
+                    {
+                        nutDict[nutrient] += nutrient.Quantity;
+                    }
+                    else
+                    {
+                        nutDict.Add(nutrient, nutrient.Quantity);
+                    }
+                }
             }
+
+                foreach ((Nutrient nutrient, double quantity) in nutDict)
+                {
+                    totalScore += nutrient.GetNutrientScore(nutrient.Settings);
+                }
+            } while (totalScore == 0);
+
+
             return totalScore / Foods.Count;
         }
 
