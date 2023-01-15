@@ -9,6 +9,7 @@ using meal_plan_generator.Context;
 using meal_plan_generator.Models.MealPlan;
 using meal_plan_generator.Context.UnitofWork;
 using Microsoft.CodeAnalysis.VisualBasic.Syntax;
+using meal_plan_generator.Services;
 
 namespace meal_plan_generator.Controllers
 {
@@ -16,10 +17,13 @@ namespace meal_plan_generator.Controllers
     {
         private readonly IUnitOfWork _uow;
         private readonly ILogger<FormsController> _logger;
-        public FormsController(IUnitOfWork uow, ILogger<FormsController> logger)
+        private readonly IService<MealPlan> _service;
+
+        public FormsController(IUnitOfWork uow, ILogger<FormsController> logger, [FromServices] IService<MealPlan> service)
         {
             _uow = uow;
             _logger = logger;
+            _service = service;
         }
 
         // GET: Forms
@@ -70,6 +74,11 @@ namespace meal_plan_generator.Controllers
             if (ModelState.IsValid)
             {
                 _logger.LogInformation("Form data: {@FormData}", form);
+
+                var top100foods = _uow.FakeFoodsRepo.GetTopAsync("Calcium");
+
+
+
                 await _uow.FormsRepo.InsertRecordAsync(form);
                 await _uow.FormsRepo.SaveChangesAsync();
                 return Json(form);

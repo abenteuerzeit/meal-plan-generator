@@ -30,6 +30,16 @@ namespace meal_plan_generator.Repository
             return await query.SingleOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<IEnumerable<Food>> GetTopAsync(string nutrientName)
+        {
+            return await _context.Foods
+                .Where(f => f.Nutrients.Any(n => n.Name == nutrientName))
+                .OrderByDescending(f => f.Nutrients.First(n => n.Name == nutrientName).Quantity)
+                .Take(100)
+                .ToListAsync();
+        }
+
+
         public async Task InsertRecordAsync(TEntity entity)
         {
             await _dbSet.AddAsync(entity);

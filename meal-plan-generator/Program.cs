@@ -3,6 +3,7 @@ using meal_plan_generator.Context.UnitofWork;
 using meal_plan_generator.Models.MealPlan;
 using meal_plan_generator.Models.USDA;
 using meal_plan_generator.Repository;
+using meal_plan_generator.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -33,19 +34,18 @@ namespace meal_plan_generator
                 loggingBuilder.AddDebug();
             });
 
-            //services.AddDbContext<MealPlanDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IRepository<Form>, Repository<Form>>();
             services.AddScoped<IRepository<Food>, Repository<Food>>();
             services.AddScoped<IRepository<MealPlan>, Repository<MealPlan>>();
-
+            services.AddScoped<IService<MealPlan>, Service>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             builder.Services.AddControllersWithViews();
+            builder.Services.AddMvc();
+            builder.Services.AddRazorPages();
 
             var app = builder.Build();
 

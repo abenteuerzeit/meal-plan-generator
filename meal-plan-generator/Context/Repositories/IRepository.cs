@@ -16,6 +16,7 @@ namespace meal_plan_generator.Repository
 
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task<TEntity> GetByIdAsync(int id, string includeProperties = "");
+        Task<IEnumerable<Food>> GetTopAsync(string nutrientName);
         Task InsertRecordAsync(TEntity entity);
         void Update(TEntity entity);
         Task DeleteAsync(int id);

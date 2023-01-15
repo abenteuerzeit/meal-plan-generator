@@ -7,7 +7,7 @@ using Nutrient = meal_plan_generator.Models.MealPlan.Nutrient;
 
 namespace meal_plan_generator.Services
 {
-    public class Service
+    public class Service : IService<MealPlan>
     {
         private IUnitOfWork _unitOfWork;
 
@@ -150,6 +150,36 @@ namespace meal_plan_generator.Services
             List<Nutrient> nutrients = GetDefaultNutrientList();
             AddFoodsToMealPlan(nutrients);
 
+        }
+
+        public IEnumerable<MealPlan> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public MealPlan GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(MealPlan entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(MealPlan entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(MealPlan entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
         }
     }
 }
