@@ -2,6 +2,7 @@
 using meal_plan_generator.Models.MealPlan;
 using meal_plan_generator.Repository;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using NuGet.Protocol;
 using System.ComponentModel;
@@ -38,11 +39,7 @@ namespace meal_plan_generator.Services
         {
             // Setup Variables
             var id = nutrientFormData.Id;
-            var foodList = await _uow.FakeFoodsRepo.GetAllAsync();
-
-
-            //_uow.FakeFoodsRepo.GetAllAsync();
-
+            var foodList = Context.FakeData.GenerateFoods(1000);
 
             // Get 100 foods with the highest quantity
             foreach (var nutrient in nutrientFormData.Nutrients)
@@ -54,12 +51,12 @@ namespace meal_plan_generator.Services
 
                 // Select a random food from the list
                 var random = new Random();
-                var index = random.Next(top100Foods.Count);
-                var randomFood = top100Foods[index];
+                int index = random.Next(top100Foods.Count);
+                Food randomFood = top100Foods[index];
                 _mealPlan.AddFood(randomFood);
 
                 // Calculate the new MSCORE after adding the food to the meal plan
-                float newMSCORE = CalculateMSCORE(_mealPlan);
+                var mScore = _mealPlan.CalculateScore();
 
                 // Check if any nutrient exceeds its upper bound after adding the food
                 //bool nutrientExceedsUB = CheckForExceededNutrient(newMSCORE);
