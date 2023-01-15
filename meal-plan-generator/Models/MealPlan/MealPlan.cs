@@ -37,28 +37,27 @@ namespace meal_plan_generator.Models.MealPlan
             do
             {
                 var nutDict = new Dictionary<Nutrient, double>();
-            foreach (var food in Foods)
-            {
-                foreach (Nutrient nutrient in food.Nutrients)
+                foreach (var food in Foods)
                 {
-                    if (nutDict.ContainsKey(nutrient))
+                    foreach (Nutrient nutrient in food.Nutrients)
                     {
-                        nutDict[nutrient] += nutrient.Quantity;
-                    }
-                    else
-                    {
-                        nutDict.Add(nutrient, nutrient.Quantity);
+                        if (nutDict.ContainsKey(nutrient))
+                        {
+                            var state = nutDict[nutrient];
+                            nutDict[nutrient] = state + nutrient.Quantity;
+                        }
+                        else
+                        {
+                            nutDict.Add(nutrient, nutrient.Quantity);
+                        }
                     }
                 }
-            }
 
                 foreach ((Nutrient nutrient, double quantity) in nutDict)
                 {
                     totalScore += nutrient.GetNutrientScore(nutrient.Settings);
                 }
             } while (totalScore == 0);
-
-
             return totalScore / Foods.Count;
         }
 

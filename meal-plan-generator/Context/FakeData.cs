@@ -33,25 +33,25 @@ namespace meal_plan_generator.Context
             {
                 return new List<Nutrient>()
                 {
-                    new Nutrient("Calcium", "mg" ) { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Phosphorus", "mg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Magnesium", "mg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Potassium", "mg" ) { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Sodium", "mg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Iron", "mg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Manganese", "mg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Copper", "mg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Zinc", "mg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Selenium", "mcg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Vitamin A", "IU") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Vitamin C", "mg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Vitamin E", "mg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Vitamin K", "mcg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Thiamin", "mg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Roboflavin", "mg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Niacin", "mg" ) { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Pantothenic Acid", "mg") { Quantity = rnd.Next(0, 1000) },
-                    new Nutrient("Folate", "mcg") { Quantity = rnd.Next(0, 1000) }
+                    new Nutrient("Calcium", "mg" ) { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Phosphorus", "mg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Magnesium", "mg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Potassium", "mg" ) { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Sodium", "mg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Iron", "mg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Manganese", "mg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Copper", "mg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Zinc", "mg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Selenium", "mcg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Vitamin A", "IU") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Vitamin C", "mg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Vitamin E", "mg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Vitamin K", "mcg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Thiamin", "mg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Roboflavin", "mg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Niacin", "mg" ) { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Pantothenic Acid", "mg") { Quantity = rnd.Next(0, 500) },
+                    new Nutrient("Folate", "mcg") { Quantity = rnd.Next(0, 500) }
                 };
             }
         }
