@@ -5,12 +5,10 @@ namespace meal_plan_generator.Models.MealPlan
 {
     public class MealPlan : EntityBase
     {
-        public List<FoundationFood> FoundationFoods { get; set; }
         public List<Food> Foods { get; set; }
 
         public MealPlan()
         {
-            FoundationFoods = new List<FoundationFood>();
             Foods = new List<Food>();
         }
 

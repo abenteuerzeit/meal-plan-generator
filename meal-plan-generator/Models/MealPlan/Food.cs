@@ -5,10 +5,7 @@ namespace meal_plan_generator.Models.MealPlan
 {
     public class Food : EntityBase
     {
-        public int FoodId { get; set; }
-
         public int NutrientId { get; set; }
-
         public string Name { get; set; }
         public virtual ICollection<Nutrient> Nutrients { get; set; }
         public double Servings { get; set; }

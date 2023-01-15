@@ -8,12 +8,13 @@ namespace meal_plan_generator.Models.MealPlan
 {
     public class Nutrient : EntityBase
     {
+        public int FoodId { get; set; }
         public string Name { get; set; }
         public string Unit { get; set; }
         public float Quantity { get; set; }
         public int NutrientSettingsId { get; set; }
         public NutrientSettings Settings { get; set; }
-        public ComponentId ComponentId { get; internal set; }
+        //public ComponentId ComponentId { get; internal set; }
 
         public Nutrient()
         {
@@ -40,18 +41,18 @@ namespace meal_plan_generator.Models.MealPlan
             Settings = new NutrientSettings();
         }
 
-        public Nutrient(ComponentId id)
-        {
-            Name = "";
-            Unit = "";
-            Quantity = 0;
-            Settings = GetNutrientDefault(id);
-        }
-        private static NutrientSettings GetNutrientDefault(ComponentId id)
-        {
-            // TODO: Set default minimum values
-            return new();
-        }
+        //public Nutrient(ComponentId id)
+        //{
+        //    Name = "";
+        //    Unit = "";
+        //    Quantity = 0;
+        //    Settings = GetNutrientDefault(id);
+        //}
+        //private static NutrientSettings GetNutrientDefault(ComponentId id)
+        //{
+        //    // TODO: Set default minimum values
+        //    return new();
+        //}
 
 
         public double GetNutrientScore(NutrientSettings settings)

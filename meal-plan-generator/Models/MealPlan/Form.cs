@@ -13,10 +13,9 @@ namespace meal_plan_generator.Models.MealPlan
     {
         [Required]
         [DisplayName("Nutrient Data")]
-        public virtual IList<Nutrient> Nutrients { get; set; }
+        public virtual IList<Nutrient> Nutrients { get; set; } = SetDefaultNutrientData();
         public Form()
         {
-            Nutrients = SetDefaultNutrientData();
         }
 
         public Form(IList<Nutrient> nutrients)

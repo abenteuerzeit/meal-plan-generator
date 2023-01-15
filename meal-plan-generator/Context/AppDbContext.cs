@@ -1,6 +1,5 @@
 ﻿using System;
 using meal_plan_generator.Models.MealPlan;
-using meal_plan_generator.Models.USDA;
 using Microsoft.EntityFrameworkCore;
 
 namespace meal_plan_generator.Context
