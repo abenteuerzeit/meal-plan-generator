@@ -56,9 +56,9 @@ namespace meal_plan_generator.Controllers
             _logger.LogInformation($"Create action called with new form Id: {form.Id}");
             foreach (var n in form.Nutrients)
             {
-                _logger.LogInformation($"Nutrient {n.Id}, {n.Name}, {n.Quantity} {n.Unit}");
-                _logger.LogInformation($"Settings {n.Settings.Id}, {n.Settings.LowerBound}, {n.Settings.IdealAmount} {n.Settings.UpperBound}");
-                _logger.LogInformation($"Intercept: {n.Settings.Intercept}, Weight: {n.Settings.Weight}");
+                _logger.LogInformation($"Nutrient {n.Id}, {n.Name}, {n.Quantity} {n.Unit} " +
+                    $"\nSettings {n.Settings.Id}, {n.Settings.LowerBound}, {n.Settings.IdealAmount} {n.Settings.UpperBound} " +
+                    $"\nIntercept: {n.Settings.Intercept}, Weight: {n.Settings.Weight}");
             }
             return View(form);
         }
@@ -75,11 +75,9 @@ namespace meal_plan_generator.Controllers
             {
                 _logger.LogInformation("Form data: {@FormData}", form);
 
-                var top100foods = _uow.FakeFoodsRepo.GetTopAsync("Calcium");
-
-
-
-                await _uow.FormsRepo.InsertRecordAsync(form);
+                //await _uow.FormsRepo.InsertRecordAsync(form);
+                var newMealPlan = await _service.GetNewMealPlanForFormAsync(form);
+                _logger.LogInformation(newMealPlan.ToString());
                 await _uow.FormsRepo.SaveChangesAsync();
                 return Json(form);
             }

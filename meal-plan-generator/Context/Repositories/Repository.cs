@@ -30,6 +30,13 @@ namespace meal_plan_generator.Repository
             return await query.SingleOrDefaultAsync(x => x.Id == id);
         }
 
+        //public async Task<TEntity> GetFormByGuidAsync(Guid id, string includeProperties = "")
+        //{
+        //    IQueryable<TEntity> query = _dbSet;
+        //    query = includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries).Aggregate(query, (current, prop) => current.Include(prop));
+        //    return
+        //}
+
         public async Task<IEnumerable<Food>> GetTopAsync(string nutrientName)
         {
             return await _context.Foods
@@ -45,7 +52,6 @@ namespace meal_plan_generator.Repository
             await _dbSet.AddAsync(entity);
         }
 
-
         public void Update(TEntity entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
@@ -60,6 +66,12 @@ namespace meal_plan_generator.Repository
         public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<(Guid, TEntity entity)> InsertAndReturnGuidRecordAsync(TEntity entity)
+        {
+            await _dbSet.AddAsync(entity);
+            return (Guid.NewGuid(), entity);
         }
 
         //public virtual IQueryable<TEntity> AsQueryable()

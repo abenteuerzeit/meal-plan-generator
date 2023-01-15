@@ -2,19 +2,32 @@
 using meal_plan_generator.Models.MealPlan;
 using meal_plan_generator.Models.USDA;
 using meal_plan_generator.Repository;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Newtonsoft.Json;
+using NuGet.Protocol;
+using System.ComponentModel;
+using Food = meal_plan_generator.Models.MealPlan.Food;
 using Nutrient = meal_plan_generator.Models.MealPlan.Nutrient;
 
 namespace meal_plan_generator.Services
 {
     public class Service : IService<MealPlan>
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _uow;
 
-        public Service(IUnitOfWork unitOfWork)
+        private MealPlan _mealPlan { get; set; }
+        private Guid _guid { get; set; }
+        private double MealScore { get; set; }
+        private double NutrientScore { get; set; }
+
+        private IList<Food> _foodList = new List<Food>();
+
+        public Service(IUnitOfWork uow)
         {
-            _unitOfWork = unitOfWork;
+            _uow = uow;
+            _mealPlan = new MealPlan();
         }
+
 
         public void LoadNutrientData(string database)
         {
@@ -22,11 +35,54 @@ namespace meal_plan_generator.Services
             throw new NotImplementedException("TODO");
         }
 
-        public void GenerateMealPlan()
+        public async Task<MealPlan> GetNewMealPlanForFormAsync(Form nutrientFormData)
         {
-            // Generate the meal plan by selecting and adding foods
-            throw new NotImplementedException("TODO");
+            // Setup Variables
+            var id = nutrientFormData.Id;
+            var foodList = await _uow.FakeFoodsRepo.GetAllAsync();
+
+
+            // Get 100 foods with the highest quantity
+            foreach (var nutrient in nutrientFormData.Nutrients)
+            {
+                var top100Foods = foodList
+                .Where(f => f.Nutrients.Any(foodNut => foodNut.Name == nutrient.Name))
+                .OrderByDescending(f => f.Nutrients.FirstOrDefault(n => n.Name == nutrient.Name).Quantity)
+                .Take(100).ToList();
+
+                // Select a random food from the list
+                var random = new Random();
+                var index = random.Next(top100Foods.Count);
+                var randomFood = top100Foods[index];
+                _mealPlan.AddFood(randomFood);
+
+                // Calculate the new MSCORE after adding the food to the meal plan
+                float newMSCORE = CalculateMSCORE(_mealPlan);
+
+                // Check if any nutrient exceeds its upper bound after adding the food
+                //bool nutrientExceedsUB = CheckForExceededNutrient(newMSCORE);
+
+                // If a nutrient exceeds its upper bound, remove the food and try again
+                //if (nutrientExceedsUB)
+                //{
+                //    _mealPlan.removeFood(randomFood);
+
+                //}
+                //else
+                //{
+                //    // Otherwise, add the food to the meal plan
+                //    _mealPlan.AddFood(randomFood);
+                //}
+            }
+
+            return _mealPlan;
+
         }
+
+
+
+
+        /*
 
         public float CalculateNutrientContent(Food food)
         {
@@ -87,7 +143,7 @@ namespace meal_plan_generator.Services
 
         }
 
-        public MealPlan AddFoodsToMealPlan(List<Nutrient> nutrients)
+        public MealPlan AddFoodsToMealPlan(List<Food> nutrients)
         {
             var mp = new MealPlan();
             foreach (var nutrient in nutrients)
@@ -116,10 +172,10 @@ namespace meal_plan_generator.Services
             return mp;
         }
 
-        public List<Nutrient> GetDefaultNutrientList()
+        public List<Food> GetDefaultNutrientList()
         {
             // Define nutrients list to consider when adding foods to the meal plan
-            return new List<Nutrient>
+            return new List<Food>
             {
                 // this is the nutrient list from https://scholarworks.gvsu.edu/cgi/viewcontent.cgi?article=1068&context=oapsf_articles
                 new Nutrient(ComponentId.Calcium_mg) { Name = ComponentId.Calcium_mg.ToString() },
@@ -147,10 +203,11 @@ namespace meal_plan_generator.Services
         public void CreateMealPlan()
         {
             var mealPlan = new MealPlan() { FoundationFoods = new List<FoundationFood>() };
-            List<Nutrient> nutrients = GetDefaultNutrientList();
+            List<Food> nutrients = GetDefaultNutrientList();
             AddFoodsToMealPlan(nutrients);
 
         }
+        */
 
         public IEnumerable<MealPlan> GetAll()
         {
@@ -178,6 +235,31 @@ namespace meal_plan_generator.Services
         }
 
         public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public MealPlan AddFoodsToMealPlan(List<Food> nutrients)
+        {
+            throw new NotImplementedException();
+        }
+
+        public float CalculateMSCORE(MealPlan mp)
+        {
+            throw new NotImplementedException();
+        }
+
+        public float CalculateNutrientContent(Food food)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateMealPlan()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Food> GetDefaultNutrientList()
         {
             throw new NotImplementedException();
         }

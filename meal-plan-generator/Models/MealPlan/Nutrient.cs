@@ -54,46 +54,47 @@ namespace meal_plan_generator.Models.MealPlan
         }
 
 
-        //public decimal GetNutrientScore()
-        //{
-        //    // Use the appropriate function based on the current quantity of the nutrient
-        //    if (IdealAmount < CurrentNutrientQuantity && CurrentNutrientQuantity <= MaxAmount)
-        //    {
-        //        return GetNutrientLessThanMaxScore();
-        //    }
-        //    else if (MinAmount < CurrentNutrientQuantity && CurrentNutrientQuantity <= IdealAmount)
-        //    {
-        //        return GetNutrientGreaterThanMinScore();
-        //    }
-        //    else if (0 <= CurrentNutrientQuantity && CurrentNutrientQuantity <= MinAmount)
-        //    {
-        //        return GetNutrientLessThanMinScore();
-        //    }
-        //    else
-        //    {
-        //        // Return 0 if the current quantity is outside the valid range (less than 0)
-        //        throw new ArgumentOutOfRangeException(nameof(CurrentNutrientQuantity));
-        //        //return 0;
-        //    }
-        //}
+        public double GetNutrientScore(NutrientSettings settings)
+        {
+            // Use the appropriate function based on the current quantity of the nutrient
+            if (settings.IdealAmount < Quantity && Quantity <= settings.UpperBound)
+            {
+                return GetNutrientLessThanMaxScore();
+            }
+            else if (settings.LowerBound < Quantity && Quantity <= settings.IdealAmount)
+            {
+                return GetNutrientGreaterThanMinScore();
+            }
+            else if (0 <= Quantity && Quantity <= settings.LowerBound)
+            {
+                return GetNutrientLessThanMinScore();
+            }
+            else
+            {
+                // Return 0 if the current quantity is outside the valid range (less than 0)
+                return 0;
+            }
 
-        //private decimal GetNutrientLessThanMinScore()
-        //{
-        //    // Return a value based on the priority and current quantity if the current quantity is greater than or equal to 0
-        //    return (PrioritySettings.LessThanMin["Weight"] * (CurrentNutrientQuantity / MinAmount)) + PrioritySettings.LessThanMin["Intercept"];
-        //}
+            throw new ArgumentOutOfRangeException(nameof(Quantity));
+        }
 
-        //private decimal GetNutrientGreaterThanMinScore()
-        //{
-        //    // Return a value based on the priority and current quantity if the current quantity is greater than or equal to the ideal amount and greater than or equal to the lower bound
-        //    return (PrioritySettings.MoreThanMin["Weight"] * (CurrentNutrientQuantity / IdealAmount)) + PrioritySettings.MoreThanMin["Intercept"];
-        //}
+        private double GetNutrientLessThanMinScore()
+        {
+            // Return a value based on the priority and current quantity if the current quantity is greater than or equal to 0
+            return (Settings.Weight * (Quantity / Settings.LowerBound)) + Settings.Intercept;
+        }
 
-        //private decimal GetNutrientLessThanMaxScore()
-        //{
-        //    // Return a value based on the priority and current quantity if the current quantity is greater than the ideal amount and less than or equal to the upper bound
-        //    return -(PrioritySettings.LessThanMax["Weight"] * (CurrentNutrientQuantity / MaxAmount)) + PrioritySettings.LessThanMax["Intercept"];
-        //}
+        private double GetNutrientGreaterThanMinScore()
+        {
+            // Return a value based on the priority and current quantity if the current quantity is greater than or equal to the ideal amount and greater than or equal to the lower bound
+            return (Settings.Weight * (Quantity / Settings.IdealAmount)) + Settings.Intercept;
+        }
+
+        private double GetNutrientLessThanMaxScore()
+        {
+            // Return a value based on the priority and current quantity if the current quantity is greater than the ideal amount and less than or equal to the upper bound
+            return -(Settings.Weight * (Quantity / Settings.UpperBound)) + Settings.Intercept;
+        }
 
         public bool IsMet()
         {

@@ -21,6 +21,7 @@ namespace meal_plan_generator.Repository
         void Update(TEntity entity);
         Task DeleteAsync(int id);
         Task SaveChangesAsync();
+        Task<(Guid, TEntity entity)> InsertAndReturnGuidRecordAsync(TEntity entity);
         //void Attach(TEntity entity);
     }
 

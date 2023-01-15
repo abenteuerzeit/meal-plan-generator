@@ -4,12 +4,19 @@ namespace meal_plan_generator.Services
 {
     public interface IService<TEntity> where TEntity : class
     {
-        IEnumerable<TEntity> GetAll();
-        TEntity GetById(int id);
-        void Add(TEntity entity);
-        void Update(TEntity entity);
-        void Remove(TEntity entity);
+        void Add(MealPlan entity);
+        MealPlan AddFoodsToMealPlan(List<Food> nutrients);
+        float CalculateMSCORE(MealPlan mp);
+        float CalculateNutrientContent(Food food);
+        void CreateMealPlan();
+        Task<TEntity> GetNewMealPlanForFormAsync(Form form);
+        IEnumerable<MealPlan> GetAll();
+        MealPlan GetById(int id);
+        List<Food> GetDefaultNutrientList();
+        void LoadNutrientData(string database);
+        void Remove(MealPlan entity);
         void SaveChanges();
+        void Update(MealPlan entity);
     }
 
 }

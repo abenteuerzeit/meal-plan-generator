@@ -1,10 +1,16 @@
-﻿namespace meal_plan_generator.Models.MealPlan
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace meal_plan_generator.Models.MealPlan
 {
     public class Food : EntityBase
     {
-        //public int Id { get; set; }
+        public int FoodId { get; set; }
+
+        public int NutrientId { get; set; }
+
         public string Name { get; set; }
-        public ICollection<Nutrient> Nutrients { get; set; }
+        public virtual ICollection<Nutrient> Nutrients { get; set; }
         public double Servings { get; set; }
         public double ServingSize { get; set; }
         public int CaloriesPerServing { get; set; }
@@ -20,10 +26,5 @@
             Nutrients = nutrients;
         }
 
-
-        internal float GetNutrientAmount(string name)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

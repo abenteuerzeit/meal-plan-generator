@@ -1,5 +1,6 @@
 ﻿using System;
 using meal_plan_generator.Models.MealPlan;
+using meal_plan_generator.Models.USDA;
 using Microsoft.EntityFrameworkCore;
 
 namespace meal_plan_generator.Context
@@ -16,6 +17,12 @@ namespace meal_plan_generator.Context
         // Database of forms for generating varied meal plans
         public DbSet<Form> Forms { get; set; }
         public DbSet<MealPlan> MealPlans { get; set; }
+
+
+
+
+
+
     }
 }
 
