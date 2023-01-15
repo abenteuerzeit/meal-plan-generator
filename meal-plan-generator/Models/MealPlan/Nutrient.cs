@@ -55,18 +55,18 @@ namespace meal_plan_generator.Models.MealPlan
         //}
 
 
-        public double GetNutrientScore(NutrientSettings settings)
+        public double GetNutrientScore()
         {
             // Use the appropriate function based on the current quantity of the nutrient
-            if (settings.IdealAmount < Quantity && Quantity <= settings.UpperBound)
+            if (Settings.IdealAmount < Quantity && Quantity <= Settings.UpperBound)
             {
                 return GetNutrientLessThanMaxScore();
             }
-            else if (settings.LowerBound < Quantity && Quantity <= settings.IdealAmount)
+            else if (Settings.LowerBound < Quantity && Quantity <= Settings.IdealAmount)
             {
                 return GetNutrientGreaterThanMinScore();
             }
-            else if (0 <= Quantity && Quantity <= settings.LowerBound)
+            else if (0 <= Quantity && Quantity <= Settings.LowerBound)
             {
                 return GetNutrientLessThanMinScore();
             }
@@ -75,7 +75,6 @@ namespace meal_plan_generator.Models.MealPlan
                 // Return 0 if the current quantity is outside the valid range (less than 0)
                 return 0;
             }
-
             throw new ArgumentOutOfRangeException(nameof(Quantity));
         }
 

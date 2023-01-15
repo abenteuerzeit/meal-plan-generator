@@ -26,13 +26,8 @@ namespace meal_plan_generator.Models.MealPlan
             Foods.Add(nutrient);
         }
 
-        public double CalculateScore()
+        public double CalculateScore(Form form)
         {
-            //var nutDict = Foods.SelectMany(f => f.Nutrients)
-            //                    .GroupBy(n => n.Name)
-            //                    .ToDictionary(g => g.Key, g => g.Sum(x => x.Quantity));
-
-
             double totalScore = 0;
             do
             {
@@ -52,10 +47,9 @@ namespace meal_plan_generator.Models.MealPlan
                         }
                     }
                 }
-
                 foreach ((Nutrient nutrient, double quantity) in nutDict)
                 {
-                    totalScore += nutrient.GetNutrientScore(nutrient.Settings);
+                    totalScore += nutrient.GetNutrientScore();
                 }
             } while (totalScore == 0);
             return totalScore / Foods.Count;

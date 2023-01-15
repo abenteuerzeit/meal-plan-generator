@@ -21,15 +21,15 @@ namespace meal_plan_generator.Models.MealPlan
 
         [Range(0, int.MaxValue, ErrorMessage = "Only positive values allowed.")]
         [DisplayName("minimum")]
-        public double LowerBound { get; set; } = 0;
+        public double LowerBound { get; set; } = 100;
 
         [Range(0, int.MaxValue, ErrorMessage = "Only positive values allowed.")]
         [DisplayName("ideal")]
-        public double IdealAmount { get; set; } = 0;
+        public double IdealAmount { get; set; } = 250;
 
         [Range(0, int.MaxValue, ErrorMessage = "Only positive values allowed.")]
         [DisplayName("maximum")]
-        public double UpperBound { get; set; } = 0;
+        public double UpperBound { get; set; } = 500;
 
         public NutrientSettings() { }
 

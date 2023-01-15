@@ -56,7 +56,7 @@ namespace meal_plan_generator.Services
                 _mealPlan.AddFood(randomFood);
 
                 // Calculate the new MSCORE after adding the food to the meal plan
-                var mScore = _mealPlan.CalculateScore();
+                MealScore = _mealPlan.CalculateScore(nutrientFormData);
 
                 // Check if any nutrient exceeds its upper bound after adding the food
                 //bool nutrientExceedsUB = CheckForExceededNutrient(newMSCORE);
