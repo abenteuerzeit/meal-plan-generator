@@ -1,7 +1,8 @@
 repo_name: abenteuerzeit/meal-plan-generator
 report_id: cdf04b5f776c318223d1f975352fa893
+version: 0.1
 repo_type: Public
-timestamp: '2023-11-12T10:23:02+00:00'
+timestamp: '2024-01-05T08:49:06+00:00'
 requested_by: abenteuerzeit
 provider: github
 branch: develop
@@ -17,8 +18,8 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/6755/2c45151a4a11d3a3c8e71bb34dd069d6_400x400.png
-  detection_source_url: USDA/src/IO.Swagger.Test/IO.Swagger.Test.csproj
-  detection_source: USDA/src/IO.Swagger/IO.Swagger.csproj
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/USDA/src/IO.Swagger.Test/IO.Swagger.Test.csproj
+  detection_source: USDA/src/IO.Swagger.Test/IO.Swagger.Test.csproj
   last_updated_by: abenteuerzeit
   last_updated_on: 2022-12-21 22:02:37.000000000 Z
 - name: C#
@@ -30,6 +31,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1015/1200px-C_Sharp_wordmark.svg.png
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator
   detection_source: Repo Metadata
 - name: CSS 3
   description: The latest evolution of the Cascading Style Sheets language
@@ -39,6 +41,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator
   detection_source: Repo Metadata
 - name: JavaScript
   description: Lightweight, interpreted, object-oriented language with first-class
@@ -49,6 +52,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator
   detection_source: Repo Metadata
 - name: ".NET"
   description: A free, cross-platform, open source developer platform for building
@@ -60,6 +64,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1014/IoPy1dce_400x400.png
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/meal-plan-generator/meal-plan-generator.csproj
   detection_source: meal-plan-generator/meal-plan-generator.csproj
   last_updated_by: abenteuerzeit
   last_updated_on: 2022-12-21 22:02:37.000000000 Z
@@ -74,7 +79,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/6403/default_91fc1f0ee315262794273aa1387eaf8fed8436e6.png
-  detection_source_url: meal-plan-generator/meal-plan-generator.csproj
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/meal-plan-generator/meal-plan-generator.csproj
   detection_source: meal-plan-generator/meal-plan-generator.csproj
   last_updated_by: KasiaPiciu
   last_updated_on: 2023-01-05 00:23:44.000000000 Z
@@ -89,7 +94,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/11331/asp.net-core.png
-  detection_source_url: meal-plan-generator/meal-plan-generator.csproj
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/meal-plan-generator/meal-plan-generator.csproj
   detection_source: meal-plan-generator/meal-plan-generator.csproj
   last_updated_by: KasiaPiciu
   last_updated_on: 2023-01-05 00:23:44.000000000 Z
@@ -103,6 +108,7 @@ tools:
   category: Data Stores
   sub_category: Object Relational Mapper (ORM)
   image_url: https://img.stackshare.io/service/3251/no-img-open-source.png
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/meal-plan-generator/meal-plan-generator.csproj
   detection_source: meal-plan-generator/meal-plan-generator.csproj
   last_updated_by: KasiaPiciu
   last_updated_on: 2023-01-05 00:23:44.000000000 Z
@@ -115,6 +121,7 @@ tools:
   category: Data Stores
   sub_category: Object Relational Mapper (ORM)
   image_url: https://img.stackshare.io/service/10254/no-img-open-source.png
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/meal-plan-generator/meal-plan-generator.csproj
   detection_source: meal-plan-generator/meal-plan-generator.csproj
   last_updated_by: KasiaPiciu
   last_updated_on: 2023-01-05 00:23:44.000000000 Z
@@ -126,6 +133,7 @@ tools:
   category: Data Stores
   sub_category: Databases
   image_url: https://img.stackshare.io/service/1027/sql_server.png
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/meal-plan-generator/meal-plan-generator.csproj
   detection_source: meal-plan-generator/meal-plan-generator.csproj
   last_updated_by: abenteuerzeit
   last_updated_on: 2023-01-08 15:49:21.000000000 Z
@@ -137,6 +145,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator
   detection_source: Repo Metadata
 - name: NUnit
   description: An open-source unit testing framework
@@ -146,6 +155,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Testing Frameworks
   image_url: https://img.stackshare.io/service/2371/jZ6MYx5Y_400x400.png
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/USDA/src/IO.Swagger.Test/packages.config
   detection_source: USDA/src/IO.Swagger.Test/packages.config
   last_updated_by: abenteuerzeit
   last_updated_on: 2022-12-21 22:02:37.000000000 Z
@@ -157,6 +167,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/service/2637/6I3oEOP4_400x400.jpg
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/meal-plan-generator/meal-plan-generator.csproj
   detection_source: meal-plan-generator/meal-plan-generator.csproj
   last_updated_by: abenteuerzeit
   last_updated_on: 2022-12-21 22:02:37.000000000 Z
@@ -169,6 +180,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/460/Lu6cGu0z_400x400.png
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/USDA/.travis.yml
   detection_source: USDA/.travis.yml
   last_updated_by: abenteuerzeit
   last_updated_on: 2022-12-21 22:02:37.000000000 Z
@@ -181,6 +193,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Integrated Development Environment
   image_url: https://img.stackshare.io/service/1451/SR2hUhQN.png
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/USDA/IO.Swagger.sln
   detection_source: USDA/IO.Swagger.sln
   last_updated_by: abenteuerzeit
   last_updated_on: 2022-12-21 22:02:37.000000000 Z
@@ -193,7 +206,8 @@ tools:
   category: Application Utilities
   sub_category: API Tools
   image_url: https://img.stackshare.io/service/20915/default_445d4e39e5f74faa53e6902cd6d552ff56c3a0a3.png
-  detection_source: USDA/src/IO.Swagger/packages.config
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/USDA/src/IO.Swagger.Test/packages.config
+  detection_source: USDA/src/IO.Swagger.Test/packages.config
   last_updated_by: abenteuerzeit
   last_updated_on: 2022-12-21 22:02:37.000000000 Z
 - name: Shell
@@ -205,6 +219,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator
   detection_source: Repo Metadata
 - name: JsonSubTypes
   description: Discriminated Json Subtypes Converter implementation for .NET
@@ -216,8 +231,8 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/13239/default_cadeaa4a9968284dcd1223273394c410c31c9d09.png
-  detection_source_url: USDA/src/IO.Swagger.Test/packages.config
-  detection_source: USDA/src/IO.Swagger/packages.config
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/USDA/src/IO.Swagger.Test/packages.config
+  detection_source: USDA/src/IO.Swagger.Test/packages.config
   last_updated_by: abenteuerzeit
   last_updated_on: 2022-12-21 22:02:37.000000000 Z
 - name: Microsoft.EntityFrameworkCore
@@ -231,7 +246,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/12852/default_ccf90b566c21ad9eaa59733f297e535ea39fb3b4.png
-  detection_source_url: meal-plan-generator/meal-plan-generator.csproj
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/meal-plan-generator/meal-plan-generator.csproj
   detection_source: meal-plan-generator/meal-plan-generator.csproj
   last_updated_by: abenteuerzeit
   last_updated_on: 2023-01-08 15:49:21.000000000 Z
@@ -245,7 +260,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/12891/default_4e8402857d2ce7356903ee7422d9b4a0f23cc137.png
-  detection_source_url: meal-plan-generator/meal-plan-generator.csproj
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/meal-plan-generator/meal-plan-generator.csproj
   detection_source: meal-plan-generator/meal-plan-generator.csproj
   last_updated_by: abenteuerzeit
   last_updated_on: 2023-01-08 15:49:21.000000000 Z
@@ -260,7 +275,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/13138/default_a057bdad489be3cb053d372a68695da4ac94962d.png
-  detection_source_url: meal-plan-generator/meal-plan-generator.csproj
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/meal-plan-generator/meal-plan-generator.csproj
   detection_source: meal-plan-generator/meal-plan-generator.csproj
   last_updated_by: abenteuerzeit
   last_updated_on: 2023-01-08 15:49:21.000000000 Z
@@ -274,7 +289,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/12846/default_0f5233770e71818507f2339042e7e61bef904e70.png
-  detection_source_url: meal-plan-generator/meal-plan-generator.csproj
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/meal-plan-generator/meal-plan-generator.csproj
   detection_source: meal-plan-generator/meal-plan-generator.csproj
   last_updated_by: abenteuerzeit
   last_updated_on: 2023-01-08 15:49:21.000000000 Z
@@ -288,7 +303,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/12853/default_3ee9e3bfd65cbae9db28ab78b712a58bcd81af27.png
-  detection_source_url: meal-plan-generator/meal-plan-generator.csproj
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/meal-plan-generator/meal-plan-generator.csproj
   detection_source: meal-plan-generator/meal-plan-generator.csproj
   last_updated_by: abenteuerzeit
   last_updated_on: 2023-01-08 15:49:21.000000000 Z
@@ -302,7 +317,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/13477/default_eb78542773998d1500f13778aa04738ef49376bd.png
-  detection_source_url: meal-plan-generator/meal-plan-generator.csproj
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/meal-plan-generator/meal-plan-generator.csproj
   detection_source: meal-plan-generator/meal-plan-generator.csproj
   last_updated_by: abenteuerzeit
   last_updated_on: 2023-01-08 15:49:21.000000000 Z
@@ -316,13 +331,19 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/nuget/image.png
-  detection_source_url: USDA/src/IO.Swagger.Test/packages.config
-  detection_source: meal-plan-generator/meal-plan-generator.csproj
+  detection_source_url: https://github.com/abenteuerzeit/meal-plan-generator/blob/develop/USDA/src/IO.Swagger.Test/packages.config
+  detection_source: USDA/src/IO.Swagger.Test/packages.config
   last_updated_by: abenteuerzeit
   last_updated_on: 2022-12-21 22:02:37.000000000 Z
   vulnerabilities:
-  - name: Improper Handling of Exceptional Conditions in Newtonsoft.Json
+  - name: 'Duplicate Advisory: Improper Handling of Exceptional Conditions in Newtonsoft.Json'
     cve_id: 
+    cve_url: https://github.com/advisories/GHSA-8rfx-6mr3-5jh3
+    detected_date: Jan 4
+    severity: high
+    first_patched: 13.0.1
+  - name: Improper Handling of Exceptional Conditions in Newtonsoft.Json
+    cve_id: CVE-2024-21907
     cve_url: https://github.com/advisories/GHSA-5crp-9r3c-p9vr
     detected_date: Jun 23
     severity: high
