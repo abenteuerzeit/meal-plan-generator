@@ -1,7 +1,8 @@
 <!--
---- Readme.md Snippet without images Start ---
+&lt;--- Readme.md Snippet without images Start ---&gt;
 ## Tech Stack
 abenteuerzeit/meal-plan-generator is built on the following main stack:
+
 - [.NET](http://www.microsoft.com/net/) – Frameworks (Full Stack)
 - [C#](http://csharp.net) – Languages
 - [Microsoft SQL Server](http://microsoft.com/sqlserver) – Databases
@@ -18,11 +19,13 @@ abenteuerzeit/meal-plan-generator is built on the following main stack:
 - [Travis CI](http://travis-ci.com/) – Continuous Integration
 
 Full tech stack [here](/techstack.md)
---- Readme.md Snippet without images End ---
 
---- Readme.md Snippet with images Start ---
+&lt;--- Readme.md Snippet without images End ---&gt;
+
+&lt;--- Readme.md Snippet with images Start ---&gt;
 ## Tech Stack
 abenteuerzeit/meal-plan-generator is built on the following main stack:
+
 - <img width='25' height='25' src='https://img.stackshare.io/service/1014/IoPy1dce_400x400.png' alt='.NET'/> [.NET](http://www.microsoft.com/net/) – Frameworks (Full Stack)
 - <img width='25' height='25' src='https://img.stackshare.io/service/1015/1200px-C_Sharp_wordmark.svg.png' alt='C#'/> [C#](http://csharp.net) – Languages
 - <img width='25' height='25' src='https://img.stackshare.io/service/1027/sql_server.png' alt='Microsoft SQL Server'/> [Microsoft SQL Server](http://microsoft.com/sqlserver) – Databases
@@ -39,14 +42,15 @@ abenteuerzeit/meal-plan-generator is built on the following main stack:
 - <img width='25' height='25' src='https://img.stackshare.io/service/460/Lu6cGu0z_400x400.png' alt='Travis CI'/> [Travis CI](http://travis-ci.com/) – Continuous Integration
 
 Full tech stack [here](/techstack.md)
---- Readme.md Snippet with images End ---
+
+&lt;--- Readme.md Snippet with images End ---&gt;
 -->
 <div align="center">
 
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [abenteuerzeit/meal-plan-generator](https://github.com/abenteuerzeit/meal-plan-generator)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|25<br/>Tools used|11/12/23 <br/>Report generated|
+|25<br/>Tools used|01/05/24 <br/>Report generated|
 |------|------|
 </div>
 
@@ -225,9 +229,9 @@ Full tech stack [here](/techstack.md)
 |[Microsoft.Extensions.DependencyInjection](https://www.nuget.org/Microsoft.Extensions.DependencyInjection)|v6.0.1|01/08/23|abenteuerzeit |Apache-2.0|N/A|
 |[Microsoft.Extensions.Logging.Abstractions](https://www.nuget.org/Microsoft.Extensions.Logging.Abstractions)|v7.0.0|01/08/23|abenteuerzeit |Apache-2.0|N/A|
 |[Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/Microsoft.VisualStudio.Web.CodeGeneration.Design)|v6.0.11|01/08/23|abenteuerzeit |Apache-2.0|N/A|
-|[Newtonsoft.Json](https://www.nuget.org/Newtonsoft.Json)|v10.0.3|12/21/22|abenteuerzeit |MIT|[](https://github.com/advisories/GHSA-5crp-9r3c-p9vr) (High)|
+|[Newtonsoft.Json](https://www.nuget.org/Newtonsoft.Json)|v10.0.3|12/21/22|abenteuerzeit |MIT|[](https://github.com/advisories/GHSA-8rfx-6mr3-5jh3) (High)<br/>[CVE-2024-21907](https://github.com/advisories/GHSA-5crp-9r3c-p9vr) (High)|
 
 <br/>
 <div align='center'>
 
-Generated via [Stack File](https://github.com/apps/stack-file)
+Generated via [Stack File](https://github.com/marketplace/stack-file)
