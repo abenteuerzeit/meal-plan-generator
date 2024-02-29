@@ -3,20 +3,20 @@
 ## Tech Stack
 abenteuerzeit/meal-plan-generator is built on the following main stack:
 
-- [.NET](http://www.microsoft.com/net/) – Frameworks (Full Stack)
-- [C#](http://csharp.net) – Languages
-- [Microsoft SQL Server](http://microsoft.com/sqlserver) – Databases
-- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
-- [Visual Studio](http://msdn.microsoft.com/en-us/vstudio/aa718325.aspx) – Integrated Development Environment
-- [NUnit](http://www.nunit.org/) – Testing Frameworks
-- [Entity Framework](https://docs.microsoft.com/en-us/aspnet/entity-framework) – Object Relational Mapper (ORM)
-- [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
-- [.NET Core](https://docs.microsoft.com/en-us/dotnet/core/) – Frameworks (Full Stack)
 - [ASP.NET](https://www.asp.net/) – Languages
-- [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) – Object Relational Mapper (ORM)
+- [C#](http://csharp.net) – Languages
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
+- [.NET](http://www.microsoft.com/net/) – Frameworks (Full Stack)
+- [.NET Core](https://docs.microsoft.com/en-us/dotnet/core/) – Frameworks (Full Stack)
 - [ASP.NET Core](docs.microsoft.com/en-us/aspnet/core/) – Frameworks (Full Stack)
-- [RestSharp](https://restsharp.dev/) – API Tools
+- [Entity Framework](https://docs.microsoft.com/en-us/aspnet/entity-framework) – Object Relational Mapper (ORM)
+- [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) – Object Relational Mapper (ORM)
+- [Microsoft SQL Server](http://microsoft.com/sqlserver) – Databases
+- [NUnit](http://www.nunit.org/) – Testing Frameworks
 - [Travis CI](http://travis-ci.com/) – Continuous Integration
+- [Visual Studio](http://msdn.microsoft.com/en-us/vstudio/aa718325.aspx) – Integrated Development Environment
+- [RestSharp](https://restsharp.dev/) – API Tools
+- [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
 
 Full tech stack [here](/techstack.md)
 
@@ -26,20 +26,20 @@ Full tech stack [here](/techstack.md)
 ## Tech Stack
 abenteuerzeit/meal-plan-generator is built on the following main stack:
 
-- <img width='25' height='25' src='https://img.stackshare.io/service/1014/IoPy1dce_400x400.png' alt='.NET'/> [.NET](http://www.microsoft.com/net/) – Frameworks (Full Stack)
-- <img width='25' height='25' src='https://img.stackshare.io/service/1015/1200px-C_Sharp_wordmark.svg.png' alt='C#'/> [C#](http://csharp.net) – Languages
-- <img width='25' height='25' src='https://img.stackshare.io/service/1027/sql_server.png' alt='Microsoft SQL Server'/> [Microsoft SQL Server](http://microsoft.com/sqlserver) – Databases
-- <img width='25' height='25' src='https://img.stackshare.io/service/1209/javascript.jpeg' alt='JavaScript'/> [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
-- <img width='25' height='25' src='https://img.stackshare.io/service/1451/SR2hUhQN.png' alt='Visual Studio'/> [Visual Studio](http://msdn.microsoft.com/en-us/vstudio/aa718325.aspx) – Integrated Development Environment
-- <img width='25' height='25' src='https://img.stackshare.io/service/2371/jZ6MYx5Y_400x400.png' alt='NUnit'/> [NUnit](http://www.nunit.org/) – Testing Frameworks
-- <img width='25' height='25' src='https://img.stackshare.io/service/3251/no-img-open-source.png' alt='Entity Framework'/> [Entity Framework](https://docs.microsoft.com/en-us/aspnet/entity-framework) – Object Relational Mapper (ORM)
-- <img width='25' height='25' src='https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png' alt='Shell'/> [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
-- <img width='25' height='25' src='https://img.stackshare.io/service/6403/default_91fc1f0ee315262794273aa1387eaf8fed8436e6.png' alt='.NET Core'/> [.NET Core](https://docs.microsoft.com/en-us/dotnet/core/) – Frameworks (Full Stack)
 - <img width='25' height='25' src='https://img.stackshare.io/service/6755/2c45151a4a11d3a3c8e71bb34dd069d6_400x400.png' alt='ASP.NET'/> [ASP.NET](https://www.asp.net/) – Languages
-- <img width='25' height='25' src='https://img.stackshare.io/service/10254/no-img-open-source.png' alt='Entity Framework Core'/> [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) – Object Relational Mapper (ORM)
+- <img width='25' height='25' src='https://img.stackshare.io/service/1015/1200px-C_Sharp_wordmark.svg.png' alt='C#'/> [C#](http://csharp.net) – Languages
+- <img width='25' height='25' src='https://img.stackshare.io/service/1209/javascript.jpeg' alt='JavaScript'/> [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
+- <img width='25' height='25' src='https://img.stackshare.io/service/1014/IoPy1dce_400x400.png' alt='.NET'/> [.NET](http://www.microsoft.com/net/) – Frameworks (Full Stack)
+- <img width='25' height='25' src='https://img.stackshare.io/service/6403/default_91fc1f0ee315262794273aa1387eaf8fed8436e6.png' alt='.NET Core'/> [.NET Core](https://docs.microsoft.com/en-us/dotnet/core/) – Frameworks (Full Stack)
 - <img width='25' height='25' src='https://img.stackshare.io/service/11331/asp.net-core.png' alt='ASP.NET Core'/> [ASP.NET Core](docs.microsoft.com/en-us/aspnet/core/) – Frameworks (Full Stack)
-- <img width='25' height='25' src='https://img.stackshare.io/service/20915/default_445d4e39e5f74faa53e6902cd6d552ff56c3a0a3.png' alt='RestSharp'/> [RestSharp](https://restsharp.dev/) – API Tools
+- <img width='25' height='25' src='https://img.stackshare.io/service/3251/no-img-open-source.png' alt='Entity Framework'/> [Entity Framework](https://docs.microsoft.com/en-us/aspnet/entity-framework) – Object Relational Mapper (ORM)
+- <img width='25' height='25' src='https://img.stackshare.io/service/10254/no-img-open-source.png' alt='Entity Framework Core'/> [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) – Object Relational Mapper (ORM)
+- <img width='25' height='25' src='https://img.stackshare.io/service/1027/sql_server.png' alt='Microsoft SQL Server'/> [Microsoft SQL Server](http://microsoft.com/sqlserver) – Databases
+- <img width='25' height='25' src='https://img.stackshare.io/service/2371/jZ6MYx5Y_400x400.png' alt='NUnit'/> [NUnit](http://www.nunit.org/) – Testing Frameworks
 - <img width='25' height='25' src='https://img.stackshare.io/service/460/Lu6cGu0z_400x400.png' alt='Travis CI'/> [Travis CI](http://travis-ci.com/) – Continuous Integration
+- <img width='25' height='25' src='https://img.stackshare.io/service/1451/SR2hUhQN.png' alt='Visual Studio'/> [Visual Studio](http://msdn.microsoft.com/en-us/vstudio/aa718325.aspx) – Integrated Development Environment
+- <img width='25' height='25' src='https://img.stackshare.io/service/20915/default_445d4e39e5f74faa53e6902cd6d552ff56c3a0a3.png' alt='RestSharp'/> [RestSharp](https://restsharp.dev/) – API Tools
+- <img width='25' height='25' src='https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png' alt='Shell'/> [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
 
 Full tech stack [here](/techstack.md)
 
@@ -50,7 +50,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [abenteuerzeit/meal-plan-generator](https://github.com/abenteuerzeit/meal-plan-generator)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|25<br/>Tools used|01/05/24 <br/>Report generated|
+|25<br/>Tools used|02/29/24 <br/>Report generated|
 |------|------|
 </div>
 
